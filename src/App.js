@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+// routes
+import Router from "./routes";
+// theme
+import ThemeConfig from "./theme";
+import GlobalStyles from "./theme/globalStyles";
+// hooks
+import useAuth from "./hooks/useAuth";
+// mantenedorAdmin
+import ScrollToTop from "./components/ScrollToTop";
+import GoogleAnalytics from "./components/GoogleAnalytics";
+import LoadingScreen, { ProgressBarStyle } from "./components/LoadingScreen";
+
+// ----------------------------------------------------------------------
+
+export default function App() {
+  const { isInitialized } = useAuth();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeConfig>
+      <GlobalStyles />
+      <ProgressBarStyle />
+      <ScrollToTop />
+      <GoogleAnalytics />
+      {isInitialized ? <Router /> : <LoadingScreen />}
+    </ThemeConfig>
   );
 }
 
-export default App;
+
