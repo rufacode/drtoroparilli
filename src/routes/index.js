@@ -72,7 +72,7 @@ export default function Router() {
       path: '/nosotros',
       element: <MainLayout />,
       children: [
-        {path: '', element: <div>nosotros</div>},
+        {path: '', element:  <AboutUs /> },
         // {path: 'equipo', element: <FormSuccess />},
         // {path: 'instalaciones', element: <FormFail />}
       ]
@@ -81,7 +81,8 @@ export default function Router() {
       path: '/procedimientos',
       element: <MainLayout />,
       children: [
-        {path: '', element: <div>procedimientos</div>},
+        {path: '', element: <Procedures />
+    },
         // {path: 'hombre', element: <FormSuccess />},
         // {path: 'mujer', element: <FormFail />}
       ]
@@ -90,7 +91,7 @@ export default function Router() {
       path: '/antes-y-despues',
       element: <MainLayout />,
       children: [
-        {path: '', element: <div>antes y despues</div>},
+        {path: '', element: <BeforeAndAfter />},
         // {path: 'hombre', element: <FormSuccess />},
         // {path: 'mujer', element: <FormFail />}
       ]
@@ -103,3 +104,6 @@ const Articles = Loadable(lazy(() => import('../pages/Articles')));
 const OnlineConsult = Loadable(lazy(() => import('../pages/OnlineConsult')));
 const Doubts = Loadable(lazy(() => import('../pages/Doubts')));
 const Contact = Loadable(lazy(() => import('../pages/Contact')));
+const AboutUs = Loadable(lazy(() => import('../pages/AboutUs')));
+const BeforeAndAfter = Loadable(lazy(() => import('../pages/BeforeAndAfter')));
+const Procedures = Loadable(lazy(() => import('../pages/Procedures')));

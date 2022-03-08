@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 // slices
 import exampleReducer from "./slices/exampleSlice";
+import formsReducer from "./slices/formsSlice";
 
 
 // ----------------------------------------------------------------------
@@ -14,7 +15,8 @@ const rootPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-  example: exampleReducer
+  example: exampleReducer,
+  forms: formsReducer
 });
 
 export { rootPersistConfig, rootReducer };
