@@ -37,8 +37,8 @@ export default function ContactInfo() {
   return (
     <Paper elevation={3} sx={{ p: 3, minHeight: '30rem' }}>
       <ButtonWrapper >
-        <Button variant={view === 'venezuela' && 'contained'} onClick={() => setView('venezuela')}>Venezuela</Button>
-        <Button variant={view === 'dominicana' && 'contained'} onClick={() => setView('dominicana')}>Republica Dominicana</Button>
+        <Button sx={{ fontSize: '.85rem' }} variant={view === 'venezuela' && 'contained'} onClick={() => setView('venezuela')}>Venezuela</Button>
+        <Button sx={{ fontSize: '.85rem' }} variant={view === 'dominicana' && 'contained'} onClick={() => setView('dominicana')}>Republica Dominicana</Button>
       </ButtonWrapper>
       {component}
     </Paper>
