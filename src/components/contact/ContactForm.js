@@ -47,16 +47,13 @@ export default function ContactForm() {
     formik;
 
   return (
-    <Container sx={{py: {xs: 5, md: 10}}}>
+    <Container sx={{py: {xs: 5}}}>
       <Box maxWidth={800} width="100%" display="block" mx="auto">
-        <Typography variant="h2" sx={{mb: 2}} >
-          Contacto
-        </Typography>
         <FormikProvider value={formik}>
           <Form autoComplete="off" novalidate onSubmit={handleSubmit}>
 
             <Grid container spacing={2}>
-              <Grid item sx={12} md={6}>
+              <Grid item xs={12} md={6}>
                 <Typography variant="body1">Nombre *</Typography>
                 <TextField
                   fullWidth
@@ -152,7 +149,7 @@ export default function ContactForm() {
               </Grid>
               <Grid item xs={12} md={6}>
                 <Typography variant="body1">¿Como se entero de nosotros? *</Typography>
-                <FormControl variant="outlined" fullWidth>
+                <FormControl variant="outlined" sx={{ mb: 2 }} fullWidth>
                   <Select
                     labelId="howDidYouKnow"
                     id="howDidYouKnow"

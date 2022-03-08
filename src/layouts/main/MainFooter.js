@@ -20,11 +20,15 @@ const RootStyle = styled("div")(({ theme }) => ({
   padding: '1.5rem',
   width: '100%',
   bottom: 0,
+  boxShadow: '0px -5px 6px -3px lightgray',
   backgroundColor: theme.palette.background.default,
   // borderTop: ".6rem solid " + grey[100],
   // boxShadow: '0px -5px 6px -3px lightgray',
   borderBottom: "1rem solid " + theme.palette.primary.main,
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.down("md")]: {
+    // borderTop: ".6rem solid " + grey[100],
+    justifyContent: 'center',
+
     // borderTop: "3rem solid " + grey[100],
   },
 }));
@@ -74,19 +78,21 @@ export default function MainFooter() {
 
   return (
     <RootStyle>
-      <SocialIconsWrapper >
-        {
-          [...Array(3)].map((icon, i) => (
-            <img
-              src="/static/icons/facebook-logo.png"
-              key={i + 1}
-              width={30}
-              style={{ margin: '0 .5rem ' }}
-              alt="facebook logo"/>
-          ))
+      <MHidden width='mdDown'>
+        <SocialIconsWrapper >
+          {
+            [...Array(3)].map((icon, i) => (
+              <img
+                src="/static/icons/facebook-logo.png"
+                key={i + 1}
+                width={30}
+                style={{ margin: '0 .5rem ' }}
+                alt="facebook logo"/>
+            ))
 
-        }
-      </SocialIconsWrapper>
+          }
+        </SocialIconsWrapper>
+      </MHidden>
       <Button variant='outlined'>
         Consulta online
       </Button>
