@@ -1,5 +1,8 @@
 import {styled} from "@mui/material/styles";
 import Page from "../components/Page";
+import {Grid} from "@mui/material";
+import ConsultInfo from "../components/onlineConsult/ConsultInfo";
+import ConsultForm from "../components/onlineConsult/ConsultForm";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -9,8 +12,10 @@ export const RootStyle = styled(Page)(({theme}) => ({
   width: "100%",
   position: "relative",
   paddingTop: APP_BAR_MOBILE,
+  paddingBottom: APP_BAR_MOBILE,
   [theme.breakpoints.up("md")]: {
     paddingTop: APP_BAR_DESKTOP,
+    paddingBottom: APP_BAR_DESKTOP,
   },
 }))
 
@@ -19,7 +24,14 @@ export const RootStyle = styled(Page)(({theme}) => ({
 export default function OnlineConsult() {
   return (
     <RootStyle>
-      hello online consult page
+      <Grid container>
+        <Grid item xs={12} md={4}>
+          <ConsultInfo />
+        </Grid>
+        <Grid item xs={12} md={8}>
+          <ConsultForm />
+        </Grid>
+      </Grid>
     </RootStyle>
   )
 }
