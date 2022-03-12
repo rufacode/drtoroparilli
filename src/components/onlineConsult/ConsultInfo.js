@@ -13,7 +13,7 @@ export default function ConsultInfo() {
   }, [state])
 
   return (
-    <Box sx={{ p: 3, height: {md: '100vh'}, backgroundColor: '#307cceab', color: '#fff', position: 'relative' }}>
+    <Box sx={{ p: 3, height: {md: '100vh'}, backgroundColor: '#307cceab', color: '#fff' }}>
       <Typography variant='h1' color='#fff' align='center'>Consulta <br/> online</Typography>
       <MHidden width='mdDown'>
         <Typography sx={{ mt: 2 }} variant='body1'>
@@ -42,18 +42,13 @@ export default function ConsultInfo() {
       </MHidden>
       <Box
       sx={{
-        display: {xs: 'flex', md: 'auto'},
-        justifyContent: 'center',
-        mt: {xs: 2, md: 0}
+        display: 'flex',
+        justifyContent: {xs: 'center', md: 'end'},
+        mt: {md: 5, xs: 2}
       }}>
         <Button
           variant='contained'
           size='small'
-          sx={{
-            position: {md: 'absolute'},
-            bottom: {md:'2rem'},
-            right: {md:'2rem'}
-          }}
         >
           Reportar error
         </Button>

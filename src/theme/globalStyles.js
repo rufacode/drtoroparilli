@@ -22,7 +22,18 @@ export default function GlobalStyles() {
         },
         body: {
           width: '100%',
-          height: '100%'
+          height: '100%',
+
+          // "&::-webkit-scrollbar": {
+          //   width: '1em',
+          // },
+          // "&::-webkit-scrollbar-track": {
+          //   boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)'
+          // },
+          // "&::-webkit-scrollbar-thumb": {
+          //   backgroundColor: 'red',
+          //   outline: '1px solid slategrey',
+          // }
         },
         '#root': {
           width: '100%',
