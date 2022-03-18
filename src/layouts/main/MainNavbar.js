@@ -52,12 +52,12 @@ export default function MainNavbar() {
   const isHome = pathname === "/";
 
   return (
-    <AppBar sx={{boxShadow: 0, bgcolor: "transparent"}}>
+    <AppBar sx={{boxShadow: 0, bgcolor: "rgba(255,255,255, 0.5);", }}>
       <ToolbarStyle
         disableGutters
         sx={{
           ...(isOffset && {
-            bgcolor: "background.default",
+            bgcolor: "rgba(255,255,255, 0.6);",
             height: {md: APP_BAR_DESKTOP - 20},
           }),
         }}

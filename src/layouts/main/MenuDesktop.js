@@ -13,8 +13,9 @@ import {Box, CardActionArea, Grid, Link, List, ListItem, ListSubheader, Popover,
 // ----------------------------------------------------------------------
 
 const LinkStyle = styled(Link)(({theme}) => ({
-  ...theme.typography.subtitle1,
-  color: blueGrey[800],
+  ...theme.typography.subtitle2,
+  fontWeight: 'bold',
+  color: theme.palette.primary,
   marginRight: theme.spacing(5),
   transition: theme.transitions.create('opacity', {
     duration: theme.transitions.duration.shortest
@@ -36,7 +37,7 @@ const ListItemStyle = styled(ListItem)(({theme}) => ({
   transition: theme.transitions.create('color'),
   '&:hover': {
     color: theme.palette.text.primary
-  }
+  },
 }));
 
 // ----------------------------------------------------------------------

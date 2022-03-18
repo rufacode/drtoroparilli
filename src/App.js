@@ -11,6 +11,10 @@ import ScrollToTop from "./components/ScrollToTop";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import LoadingScreen, { ProgressBarStyle } from "./components/LoadingScreen";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
 // ----------------------------------------------------------------------
 
 export default function App() {

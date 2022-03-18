@@ -85,7 +85,8 @@ export default function LoadingScreen({ ...other }) {
             repeat: Infinity
           }}
         >
-          <Logo sx={{ width: 64, height: 64 }} />
+          {/*<Logo sx={{ width: 64, height: 64 }} />*/}
+          <img src="/static/img/loader.gif" alt=""/>
         </motion.div>
 
         <Box

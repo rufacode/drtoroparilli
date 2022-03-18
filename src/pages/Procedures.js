@@ -1,12 +1,15 @@
 import {styled} from "@mui/material/styles";
 import Page from "../components/Page";
-import {Grid} from "@mui/material";
+import {Container, Grid, Typography} from "@mui/material";
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import ProceduresList from "../components/procedures/ProceduresList";
 import ProcedureDetail from "../components/procedures/ProcedureDetail";
 import {Element} from 'react-scroll'
+import {useDispatch} from "../redux/store";
+import {updateImg} from "../redux/slices/backgroundImageSlice";
+import LoadingScreen from "../components/LoadingScreen";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -29,27 +32,23 @@ export const RootStyle = styled(Page)(({theme}) => ({
 export default function Procedures() {
   const [sex, setSex] = useState('male');
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateImg('/static/img/procedures.jpg'))
+  }, [])
+
   function changeSex(value) {
     setSex(value);
-    // setSelectedValue({
-    //   name: '',
-    //   id: null,
-    //   group: '',
-    //   label: '',
-    //   img: '',
-    //   detail: '',
-    //   questions: []
-    // })
   }
-
-  // const states = {selectedValue, setSelectedValue};
-
-  // console.log(selectedValue);
 
   return (
     <RootStyle title='Articulos'>
+      <Container>
+        <Typography variant='h2'>Procedimientos</Typography>
+      </Container>
       <Grid container spacing={2} alignItems='center' justifyContent='center'>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <FemaleIcon
             onClick={() => changeSex('female')}
             sx={{

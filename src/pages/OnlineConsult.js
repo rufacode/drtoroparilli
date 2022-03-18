@@ -3,6 +3,9 @@ import Page from "../components/Page";
 import {Grid} from "@mui/material";
 import ConsultInfo from "../components/onlineConsult/ConsultInfo";
 import ConsultForm from "../components/onlineConsult/ConsultForm";
+import {useDispatch} from "../redux/store";
+import {useEffect} from "react";
+import {updateImg} from "../redux/slices/backgroundImageSlice";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -22,6 +25,12 @@ export const RootStyle = styled(Page)(({theme}) => ({
 
 
 export default function OnlineConsult() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateImg('/static/img/consulta.jpg'))
+  }, []);
+
   return (
     <RootStyle>
       <Grid container>

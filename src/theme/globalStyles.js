@@ -1,10 +1,13 @@
 // material
 import { useTheme } from '@mui/material/styles';
 import { GlobalStyles as GlobalThemeStyles } from '@mui/material';
+import {useSelector} from "../redux/store";
 
 // ----------------------------------------------------------------------
 
 export default function GlobalStyles() {
+  const { backgroundImage } = useSelector(state => state.backgroundImage)
+
   const theme = useTheme();
 
   return (
@@ -21,6 +24,8 @@ export default function GlobalStyles() {
           WebkitOverflowScrolling: 'touch'
         },
         body: {
+          background: `url(${backgroundImage}) no-repeat  fixed`,
+          backgroundSize: '100% 100%',
           width: '100%',
           height: '100%',
 

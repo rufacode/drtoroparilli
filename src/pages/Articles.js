@@ -4,6 +4,9 @@ import {Box, Button, Container, Grid, IconButton, MenuItem, Select, Typography} 
 import {useState} from "react";
 import SendIcon from '@mui/icons-material/Send';
 import Article from "../components/articles/Article";
+import { useEffect } from 'react';
+import {useDispatch} from "../redux/store";
+import {updateImg} from "../redux/slices/backgroundImageSlice";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -24,6 +27,12 @@ export const RootStyle = styled(Page)(({theme}) => ({
 export default function Articles() {
   const [category, setCategory] = useState('Seleccione una opcion');
   const [sex, setSex] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateImg('/static/img/articles.jpg'))
+  }, []);
+
 
   return (
     <RootStyle title='Articulos'>

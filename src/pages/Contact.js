@@ -3,6 +3,9 @@ import Page from "../components/Page";
 import {Box, Container, Grid, Typography} from "@mui/material";
 import ContactInfo from "../components/contact/ContactInfo";
 import ContactForm from "../components/contact/ContactForm";
+import {useDispatch} from "../redux/store";
+import {updateImg} from "../redux/slices/backgroundImageSlice";
+import { useEffect } from 'react';
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -12,16 +15,20 @@ export const RootStyle = styled(Page)(({theme}) => ({
   width: "100%",
   position: "relative",
   paddingTop: APP_BAR_MOBILE,
-  paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
     paddingTop: APP_BAR_DESKTOP,
-    paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
 
 
 
 export default function Contact() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateImg('/static/img/contacto.jpg'))
+  }, [])
+
   return (
     <RootStyle>
       <Container>
