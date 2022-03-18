@@ -3,6 +3,7 @@ import storage from "redux-persist/lib/storage";
 // slices
 import exampleReducer from "./slices/exampleSlice";
 import formsReducer from "./slices/formsSlice";
+import backgroundImageSlice from "./slices/backgroundImageSlice";
 
 
 // ----------------------------------------------------------------------
@@ -15,6 +16,7 @@ const rootPersistConfig = {
 };
 
 const rootReducer = combineReducers({
+  backgroundImage: backgroundImageSlice,
   example: exampleReducer,
   forms: formsReducer
 });

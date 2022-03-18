@@ -20,8 +20,8 @@ const RootStyle = styled("div")(({ theme }) => ({
   padding: '1.5rem',
   width: '100%',
   bottom: 0,
-  boxShadow: '0px -5px 6px -3px lightgray',
-  backgroundColor: theme.palette.background.default,
+  // boxShadow: '0px -5px 6px -3px lightgray',
+  backgroundColor: 'transparent',
   // borderTop: ".6rem solid " + grey[100],
   // boxShadow: '0px -5px 6px -3px lightgray',
   borderBottom: "1rem solid " + theme.palette.primary.main,
@@ -93,7 +93,14 @@ export default function MainFooter() {
           }
         </SocialIconsWrapper>
       </MHidden>
-      <Button variant='outlined'>
+      <Button variant='outlined' sx={{
+        color: 'white',
+        border: '1px solid white' ,
+        ":hover" : {
+          border: '1px solid gray',
+          color: 'gray'
+        }
+      }}>
         Consulta online
       </Button>
       {/*<Container  sx={{ py: 10 }}>*/}
