@@ -26,6 +26,9 @@ export default function Places() {
             placesData.map((place, i) => (
               <Grid key={i + 1} item xs={12} sm={6} md={4} align='center' sx={{
                 p: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'end',
                 ":hover" : {
                   backgroundColor: '#003765',
                   color: 'white',

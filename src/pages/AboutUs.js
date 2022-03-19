@@ -75,9 +75,9 @@ export default function AboutUs() {
             {component}
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6}>
-          {view}
-        </Grid>
+        {/*<Grid item xs={12} md={6}>*/}
+        {/*  {view}*/}
+        {/*</Grid>*/}
       </Grid>
 
 

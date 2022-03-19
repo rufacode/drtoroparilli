@@ -2,7 +2,7 @@ export const placesData = [
   {
     title: 'TORO PARILLI',
     place: 'CONSULTORIO CARACAS',
-    videoURL: '',
+    // videoURL: '',
     images: [
       {url: '/static/img/parilli-carousel-1.jpg'},
       {url: '/static/img/parilli-carousel-2.jpg'},
@@ -13,7 +13,7 @@ export const placesData = [
   {
     title: 'CECILIP',
     place: 'CLINICA / CONSULTORIO R.D',
-    videoURL: '',
+    // videoURL: '',
     images: [
       {url: '/static/img/cecilip-carousel-1.jpg'},
       {url: '/static/img/cecilip-carousel-2.jpg'},
