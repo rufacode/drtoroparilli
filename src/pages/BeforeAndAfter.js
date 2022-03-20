@@ -50,20 +50,19 @@ export default function BeforeAndAfter() {
   const [view, setView] = useState('male');
   const [filtered, setFiltered] = useState([])
   const [selectedImg, setSelectedImg] = useState('');
-  const [selectedValue, setSelectedValue] = useState({
-    name: '',
-    id: null,
-    group: '',
-    label: '',
-    img: '',
-    detail: '',
-    questions: []
-  });
+  const [selectedValue, setSelectedValue] = useState({});
 
   function getList(param) {
     const filtered = procedureList.filter((x) => x.label === param)
     setFiltered(filtered);
-    setSelectedValue(filtered.filter(x => x.images.length > 0)[0])
+    const value = filtered.filter(x => x.images.length > 0)
+    setSelectedValue(value[0])
+    setSelectedImg(value[0].images[0].url)
+  }
+
+  function setInitImages(el) {
+    setSelectedValue(el);
+    setSelectedImg(el.images[0].url)
   }
 
   useEffect(() => {
@@ -120,7 +119,7 @@ export default function BeforeAndAfter() {
                     <ListItemButton
                       key={i + 1}
                       sx={{py: 2}}
-                      onClick={() => setSelectedValue(el)}
+                      onClick={() => setInitImages(el)}
                       selected={el.id === selectedValue.id}
                     >
                       <ListItemText sx={{textAlign: 'center'}}>
