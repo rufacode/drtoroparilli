@@ -1,6 +1,6 @@
 import {styled} from "@mui/material/styles";
 import Page from "../components/Page";
-import {Container, Grid, Typography} from "@mui/material";
+import {Container, Grid, IconButton, Typography} from "@mui/material";
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 import {useEffect, useState} from 'react';
@@ -49,28 +49,31 @@ export default function Procedures() {
       </Container>
       <Grid container spacing={2} alignItems='center' justifyContent='center'>
         <Grid item xs={12} md={4} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <FemaleIcon
-            onClick={() => changeSex('female')}
-            sx={{
-              color:  sex === 'female' ? theme => theme.palette.secondary.lighter : 'lightgray',
-              fontSize: '10rem',
-              "&:hover": {
-                color: theme => theme.palette.secondary.lighter,
-                cursor: 'pointer'
-              }
-            }}
-          />
-          <MaleIcon
-            onClick={() => changeSex('male')}
-            sx={{
-              color: sex === 'male' ? theme => theme.palette.primary.lighter : 'lightgray'  ,
-              fontSize: '10rem',
-              "&:hover": {
-                color: theme => theme.palette.primary.lighter,
-                cursor: 'pointer'
-              }
-            }}
-          />
+          <IconButton  onClick={() => changeSex('female')}>
+            <FemaleIcon
+              sx={{
+                color:  sex === 'female' ? theme => theme.palette.secondary.lighter : 'lightgray',
+                fontSize: '10rem',
+                "&:hover": {
+                  color: theme => theme.palette.secondary.lighter,
+                  cursor: 'pointer'
+                }
+              }}
+            />
+          </IconButton>
+
+          <IconButton  onClick={() => changeSex('male')}>
+            <MaleIcon
+              sx={{
+                color: sex === 'male' ? theme => theme.palette.primary.lighter : 'lightgray'  ,
+                fontSize: '10rem',
+                "&:hover": {
+                  color: theme => theme.palette.primary.lighter,
+                  cursor: 'pointer'
+                }
+              }}
+            />
+          </IconButton>
         </Grid>
         <ProceduresList state={sex} />
       </Grid>

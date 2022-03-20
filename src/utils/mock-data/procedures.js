@@ -1,18 +1,59 @@
 export const procedureList = [
-  {id: 1, name: 'Aumento de pectorales', label: 'male', group: 'corporal'},
-  {id: 2, name: 'Gluteoplastia', label: 'male', group: 'corporal'},
-  {id: 3, name: 'Cirugia del abdomen', label: 'male', group: 'corporal'},
-  {id: 4, name: 'Liposuccion laser', label: 'male', group: 'corporal'},
-  {id: 5, name: 'Ginecomastia', label: 'male', group: 'corporal'},
-  {id: 6, name: 'Aumento de pantorrillas', label: 'male', group: 'corporal'},
-  {id: 7, name: 'Cirugia de nariz', label: 'male', group: 'facial'},
-  {id: 8, name: 'Tratamiento de arrugar', label: 'male', group: 'facial'},
-  {id: 9, name: 'Cirugia de parpados', label: 'male', group: 'facial'},
-  {id: 10, name: 'Cirugia de menton', label: 'male', group: 'facial'},
-  {id: 11, name: 'Lifting facial', label: 'male', group: 'facial'},
-  {id: 12, name: 'Cirugia de orejas', label: 'male', group: 'facial'},
-  {id: 13, name: 'Lifting de cuello', label: 'male', group: 'facial'},
-  {id: 14, name: 'Reduccion de mejillas', label: 'male', group: 'facial'},
+  {id: 1, name: 'Aumento de pectorales', label: 'male', group: 'corporal', images: []},
+  {id: 2, name: 'Gluteoplastia', label: 'male', group: 'corporal', images: []},
+  {id: 3, name: 'Cirugia del abdomen', label: 'male', group: 'corporal', images: []},
+  {
+    id: 4,
+    name: 'Liposuccion laser',
+    label: 'male',
+    group: 'corporal',
+    images: [
+      {url: '/static/img/lipolaser-1.jpg'}
+    ]
+  },
+  {
+    id: 5,
+    name: 'Ginecomastia',
+    label: 'male',
+    group: 'corporal',
+    images: [
+      {url: '/static/img/ginecomastia-1.jpg'},
+      {url: '/static/img/ginecomastia-2.jpg'},
+      {url: '/static/img/ginecomastia-3.jpg'},
+    ]
+  },
+  {id: 6, name: 'Aumento de pantorrillas', label: 'male', group: 'corporal', images: []},
+  {
+    id: 7,
+    name: 'Cirugia de nariz',
+    label: 'male',
+    group: 'facial',
+    images: [
+      {url: '/static/img/cirugianariz-1.jpg'},
+      {url: '/static/img/cirugianariz-2.jpg'},
+      {url: '/static/img/cirugianariz-3.jpg'},
+      {url: '/static/img/cirugianariz-4.jpg'},
+      {url: '/static/img/cirugianariz-5.jpg'},
+      {url: '/static/img/cirugianariz-6.jpg'},
+      {url: '/static/img/cirugianariz-7.jpg'},
+    ]
+  },
+  {id: 8, name: 'Tratamiento de arrugar', label: 'male', group: 'facial', images: []},
+  {id: 9, name: 'Cirugia de parpados', label: 'male', group: 'facial', images: []},
+  {id: 10, name: 'Cirugia de menton', label: 'male', group: 'facial', images: []},
+  {id: 11, name: 'Lifting facial', label: 'male', group: 'facial', images: []},
+  {
+    id: 12,
+    name: 'Cirugia de orejas',
+    label: 'male',
+    group: 'facial',
+    images: [
+      {url: '/static/img/cirugiaoreja-1.jpg'},
+      {url: '/static/img/cirugiaoreja-2.jpg'},
+    ]
+  },
+  {id: 13, name: 'Lifting de cuello', label: 'male', group: 'facial', images: []},
+  {id: 14, name: 'Reduccion de mejillas', label: 'male', group: 'facial', images: []},
 
   //female
 
@@ -33,24 +74,138 @@ export const procedureList = [
       {title: '¿Debo usar fajas?', text: 'Se debe usar una faja por un lapso de seis semanas, como es de rutina en casos de lipoescultura. Así la inflamación disminuye de una manera más rápida y las prótesis se mantienen en su posición indicada.'},
       {title: '¿Estas prótesis se cambian?', text: 'Estos implantes tienen una garantía de por vida. Deben cambiarse en casos de ruptura o contractura capsular. En ocasiones los pacientes piden recambio para aumentar volumen luego de varios años.'}
     ],
+    images: [
+      {url: '/static/img/gluteoplastia-1.jpg'},
+      {url: '/static/img/gluteoplastia-2.jpg'},
+      {url: '/static/img/gluteoplastia-3.jpg'},
+      {url: '/static/img/gluteoplastia-4.jpg'},
+      {url: '/static/img/gluteoplastia-5.jpg'},
+      {url: '/static/img/gluteoplastia-6.jpg'},
+    ],
     detail: `<p>La gluteoplastia es el procedimiento mediante el cual se moldean las nalgas en caso de tener poco desarrollo de su musculatura, cúmulos de grasa desagradables en sus alrededores, trastornos adquiridos o malformaciones congénitas.</p><p>Las dos únicas alternativas seguras para realizar este procedimiento son:</p><p>Lipoinyección. Consiste en infiltración de grasa propia del paciente. La grasa obtenida de distintas partes del cuerpo, como abdomen y muslos, se prepara y enriquece con factores de crecimiento y luego se inyecta en los glúteos para mejorar forma y volumen.</p><p><strong>Implantes glúteos:</strong> prótesis de silicona diseñadas para mejorar el volumen y la forma de los glúteos.</p><p><strong>Candidatas:&nbsp;</strong></p><p>Mujeres con:</p><p>• poco desarrollo de los músculos glúteos.</p><p>• cúmulos de grasa en los alrededores de los glúteos que ocasionan deformidad o aspecto estético.</p><p>• trastornos adquiridos, como accidentes, quemaduras, etc.</p><p>• malformaciones congénitas, y</p><p>• atletas que a pesar de realizar ejercicios para aumentar los glúteos no consiguen resultados suficientes.</p><p>&nbsp;</p><p><strong>Nombre del procedimiento:</strong> GLUTEOPLASTIA</p><p><strong>Duración:</strong> De 2 a 3 horas, dependiendo de los elementos específicos del caso.</p><p><strong>Anestesia:</strong> General o peridural.</p><p><strong>Hospitalización:</strong> Ambulatoria o puede requerir una noche de hospitalización.</p><p><strong>Síntomas post-operatorios:</strong> Inflamación, dolor moderado, equimosis (morados).</p><p><strong>Riesgos:</strong> Dolor, hematomas, infección, lesión cutánea, asimetrías, trombosis.</p><p><strong>Recuperación:</strong></p><p>• Una semana para reintegrarse al trabajo.</p><p>• De 2 a 3 semanas para realizar ejercicios tipo caminatas.</p><p>• Tres meses de resolución completa para realizar cualquier tipo de ejercicio o fuerza.</p><p><strong>Duración de resultados:</strong> permanentes, siempre y cuanto se mantenga un peso estable.</p>`
   },
-  {id: 16, name: 'Cirugia del abdomen', label: 'female', group: 'corporal'},
-  {id: 17, name: 'Liposuccion laser', label: 'female', group: 'corporal'},
-  {id: 18, name: 'Aumento de pantorrillas', label: 'female', group: 'corporal'},
-  {id: 19, name: 'Aumento de mamas', label: 'female', group: 'corporal'},
-  {id: 20, name: 'Reduccion de mamas', label: 'female', group: 'corporal'},
-  {id: 21, name: 'Vulvoplastia', label: 'female', group: 'corporal'},
-  {id: 22, name: 'Muslos (Cruroplastia)', label: 'female', group: 'corporal'},
-  {id: 23, name: 'Renuvion', label: 'female', group: 'corporal'},
-  {id: 24, name: 'Tratamiento de arrugas', label: 'female', group: 'facial'},
-  {id: 25, name: 'Cirugia de menton', label: 'female', group: 'facial'},
-  {id: 26, name: 'Cirugia de nariz', label: 'female', group: 'facial'},
-  {id: 27, name: 'Lifting facial', label: 'female', group: 'facial'},
-  {id: 28, name: 'Levantamiento de cejas', label: 'female', group: 'facial'},
-  {id: 29, name: 'Cirugia de parpados', label: 'female', group: 'facial'},
-  {id: 30, name: 'Reduccion de mejillas', label: 'female', group: 'facial'},
-  {id: 31, name: 'Lifting de cuello', label: 'female', group: 'facial'},
-  {id: 32, name: 'Cirugia de orejas', label: 'female', group: 'facial'},
-  {id: 33, name: 'Toxina botulinica', label: 'female', group: 'treatments'},
+  {
+    id: 16,
+    images: [
+      {url: '/static/img/cirugiaabdomen-1.jpg'},
+      {url: '/static/img/cirugiaabdomen-2.jpg'},
+    ],
+    name: 'Cirugia del abdomen',
+    label: 'female',
+    group: 'corporal'
+  },
+  {
+    id: 17,
+    images: [
+      {url: '/static/img/flipolaser-1.jpg'},
+      {url: '/static/img/flipolaser-2.jpg'},
+      {url: '/static/img/flipolaser-3.jpg'},
+      {url: '/static/img/flipolaser-4.jpg'},
+      {url: '/static/img/flipolaser-5.jpg'},
+      {url: '/static/img/flipolaser-6.jpg'},
+    ],
+    name: 'Liposuccion laser',
+    label: 'female',
+    group: 'corporal'
+  },
+  {id: 18, images: [], name: 'Aumento de pantorrillas', label: 'female', group: 'corporal'},
+  {
+    id: 19,
+    images: [
+      {url: '/static/img/aumentomamas-1.jpg'},
+      {url: '/static/img/aumentomamas-2.jpg'},
+      {url: '/static/img/aumentomamas-3.jpg'},
+      {url: '/static/img/aumentomamas-4.jpg'},
+      {url: '/static/img/aumentomamas-5.jpg'},
+      {url: '/static/img/aumentomamas-6.jpg'},
+      {url: '/static/img/aumentomamas-7.jpg'},
+      {url: '/static/img/aumentomamas-8.jpg'},
+      {url: '/static/img/aumentomamas-9.jpg'},
+      {url: '/static/img/aumentomamas-10.jpg'},
+      {url: '/static/img/aumentomamas-11.jpg'},
+    ],
+    name: 'Aumento de mamas',
+    label: 'female',
+    group: 'corporal'
+  },
+  {
+    id: 20,
+    images: [
+      {url: '/static/img/reduccionmamas.jpg'}
+    ],
+    name: 'Reduccion de mamas',
+    label: 'female',
+    group: 'corporal'
+  },
+  {id: 21, images: [], name: 'Vulvoplastia', label: 'female', group: 'corporal'},
+  {id: 22, images: [], name: 'Muslos (Cruroplastia)', label: 'female', group: 'corporal'},
+  {
+    id: 23,
+    images: [
+      {url: '/static/img/renuvion-1.jpg'},
+      {url: '/static/img/renuvion-2.jpg'},
+      {url: '/static/img/renuvion-3.jpg'},
+      {url: '/static/img/renuvion-4.jpg'},
+      {url: '/static/img/renuvion-5.jpg'},
+    ],
+    name: 'Renuvion',
+    label: 'female',
+    group: 'corporal'
+  },
+  {id: 24, images: [], name: 'Tratamiento de arrugas', label: 'female', group: 'facial'},
+  {id: 25, images: [], name: 'Cirugia de menton', label: 'female', group: 'facial'},
+  {
+    id: 26,
+    images: [
+      {url: '/static/img/fcirugianariz-1.jpg'},
+      {url: '/static/img/fcirugianariz-2.jpg'},
+      {url: '/static/img/fcirugianariz-3.jpg'},
+      {url: '/static/img/fcirugianariz-4.jpg'},
+      {url: '/static/img/fcirugianariz-5.jpg'},
+      {url: '/static/img/fcirugianariz-6.jpg'},
+      {url: '/static/img/fcirugianariz-7.jpg'},
+      {url: '/static/img/fcirugianariz-8.jpg'},
+      {url: '/static/img/fcirugianariz-9.jpg'},
+      {url: '/static/img/fcirugianariz-10.jpg'},
+      {url: '/static/img/fcirugianariz-11.jpg'},
+      {url: '/static/img/fcirugianariz-12.jpg'},
+      {url: '/static/img/fcirugianariz-13.jpg'},
+      {url: '/static/img/fcirugianariz-14.jpg'},
+    ],
+    name: 'Cirugia de nariz',
+    label: 'female',
+    group: 'facial'
+  },
+  {
+    id: 27,
+    images: [
+      {url: '/static/img/liftingfacial-1.jpg'},
+      {url: '/static/img/liftingfacial-2.jpg'},
+      {url: '/static/img/liftingfacial-3.jpg'},
+    ],
+    name: 'Lifting facial',
+    label: 'female',
+    group: 'facial'
+  },
+  {id: 28, images: [], name: 'Levantamiento de cejas', label: 'female', group: 'facial'},
+  {
+    id: 29,
+    images: [
+      {url: '/static/img/cirugiaparpados-1.jpg'},
+      {url: '/static/img/cirugiaparpados-2.jpg'},
+      {url: '/static/img/cirugiaparpados-3.jpg'},
+      {url: '/static/img/cirugiaparpados-4.jpg'},
+      {url: '/static/img/cirugiaparpados-5.jpg'},
+      {url: '/static/img/cirugiaparpados-6.jpg'},
+      {url: '/static/img/cirugiaparpados-7.jpg'},
+      {url: '/static/img/cirugiaparpados-8.jpg'},
+    ],
+    name: 'Cirugia de parpados',
+    label: 'female',
+    group: 'facial'
+  },
+  {id: 30, images: [], name: 'Reduccion de mejillas', label: 'female', group: 'facial'},
+  {id: 31, images: [], name: 'Lifting de cuello', label: 'female', group: 'facial'},
+  {id: 32, images: [], name: 'Cirugia de orejas', label: 'female', group: 'facial'},
+  {id: 33, images: [], name: 'Toxina botulinica', label: 'female', group: 'treatments'},
 ]
