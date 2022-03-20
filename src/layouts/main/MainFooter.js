@@ -1,4 +1,4 @@
-import {Link as RouterLink, useLocation} from "react-router-dom";
+import {Link as RouterLink, useLocation, useNavigate} from "react-router-dom";
 // material
 import { styled } from "@mui/material/styles";
 import {Box, Container, Divider, Grid, Typography, Link, Button} from "@mui/material";
@@ -48,6 +48,7 @@ const SocialIconsWrapper = styled(Box)(({ theme }) => ({
 }));
 
 
+
 // function Links() {
 //   return (
 //     <Grid container>
@@ -75,6 +76,11 @@ const SocialIconsWrapper = styled(Box)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function MainFooter() {
+  const navigate = useNavigate();
+
+  function goToConsult() {
+    navigate('/consulta-online');
+  }
 
   return (
     <RootStyle>
@@ -93,7 +99,7 @@ export default function MainFooter() {
           }
         </SocialIconsWrapper>
       </MHidden>
-      <Button variant='outlined' sx={{
+      <Button variant='outlined' onClick={goToConsult} sx={{
         color: 'white',
         border: '1px solid white' ,
         ":hover" : {

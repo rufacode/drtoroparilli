@@ -2,10 +2,11 @@ import {Box, Dialog, DialogContent, DialogTitle, IconButton} from "@mui/material
 import { useState } from 'react';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import ReactPlayer from "react-player";
-import Carousel from "./Carousel";
+import  CarouselBasic3 from "./carousel/CarouselBasic3";
 
 export default function InfoModal({ data}) {
   const [openPreview, setOpenPreview] = useState(false);
+
 
 
   function handleClose() {
@@ -34,7 +35,11 @@ export default function InfoModal({ data}) {
                 url={data.videoURL}
               />
             ) : (
-              <Carousel data={data.images} />
+              // <Carousel data={data.images} />
+              // <img src={data.images[1].url} alt=""/>
+              <Box sx={{overflow: "hidden", position: "relative"}}>
+                <CarouselBasic3 items={data.images}/>
+              </Box>
             )
           }
         </DialogContent>
