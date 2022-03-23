@@ -3,6 +3,12 @@ import Page from "../components/Page";
 import {useDispatch, useSelector} from "../redux/store";
 import {useEffect} from "react";
 import {getSomeData} from "../redux/slices/exampleSlice";
+import {CarouselBasic3} from "../components/carousel/index";
+import {Box, Divider} from "@mui/material";
+import ContactWidget from "../components/home/Contact";
+import News from "../components/home/News";
+import Team from "../components/home/Team";
+import ParilliHome from "../components/home/ParilliHome";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -16,6 +22,13 @@ export const RootStyle = styled(Page)(({theme}) => ({
     paddingTop: APP_BAR_DESKTOP,
   },
 }))
+
+const arrayImages = [
+  {url: '/static/img/articles.jpg', id: 123},
+  {url: '/static/img/before-after.jpg', id: 145},
+  {url: '/static/img/dudas.jpg', id: 167},
+  {url: '/static/img/contacto.jpg', id: 1890},
+]
 
 
 
@@ -35,7 +48,16 @@ export default function LandingPage() {
 
   return (
     <RootStyle title="Dr. Toro Parilli" id="move_top">
-      hello landing page {questions}
+      <Box sx={{overflow: "hidden", position: "relative"}}>
+        <CarouselBasic3 items={arrayImages}/>
+      </Box>
+      <ParilliHome />
+      <Divider sx={{ my: 2 }} />
+      <Team />
+      <Divider sx={{ my: 2 }} />
+      <News />
+      <Divider sx={{ my: 2 }} />
+      <ContactWidget />
     </RootStyle>
   )
 }

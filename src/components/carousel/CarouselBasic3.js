@@ -73,7 +73,7 @@ export default function CarouselBasic3({items}) {
     <RootStyle>
       <Slider ref={carouselRef} {...settings}>
         {items.map((item, index) => (
-          <CarouselItem key={index + 1} item={item}/>
+          <CarouselItem key={index.id1} item={item}/>
         ))}
       </Slider>
       {/*<CarouselControlsArrowsBasic2*/}

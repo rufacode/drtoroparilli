@@ -3,24 +3,25 @@ import Slider from "react-slick";
 import PropTypes from "prop-types";
 // material
 import {styled, useTheme} from "@mui/material/styles";
-import {Box, Card, CardContent, CardMedia, Divider, Rating, Tooltip, Typography,} from "@mui/material";
+import {Box, Card, CardContent, CardMedia, Divider, Paper, Tooltip, Typography,} from "@mui/material";
 // utils
 import {CarouselControlsPagingBelow} from "./controls";
-import ImgLabel from "../machines/ImgLabel";
-import moment from 'moment';
+// import ImgLabel from "../machines/ImgLabel";
+// import moment from 'moment';
 import {useNavigate} from "react-router-dom";
-import RedirectButton from "../RedirectButton";
-import CountryFlag from "../CountryFlag";
+// import RedirectButton from "../RedirectButton";
+// import CountryFlag from "../CountryFlag";
 import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
+import mockData from '../../utils/mock-data/general-mock-data';
 
 // ----------------------------------------------------------------------
 
-// const MOCK_CAROUSELS = [...Array(5)].map((_, index) => ({
-//   id: mockData.id(index),
-//   title: mockData.text.title(index),
-//   image: "/static/mock-images/feeds/feed_1.jpg",
-//   description: mockData.text.description(index),
-// }));
+const MOCK_CAROUSELS = [...Array(5)].map((_, index) => ({
+  id: mockData.id(index),
+  title: mockData.text.title(index),
+  image: "/static/mock-images/feeds/feed_1.jpg",
+  description: mockData.text.description(index),
+}));
 
 const RootStyle = styled("div")(({theme}) => ({
   overflow: "hidden",
@@ -57,7 +58,7 @@ CarouselItem.propTypes = {
   item: PropTypes.object,
 };
 
-function CarouselItem({ item }) {
+function CarouselItem({item}) {
   const navigate = useNavigate();
 
   const goToDetail = (item) => {
@@ -82,24 +83,24 @@ function CarouselItem({ item }) {
           }}
           alt="green iguana"
         />
-        <CountryFlag src='/static/dummy/chile-flag.png' />
+        {/*<CountryFlag src='/static/dummy/chile-flag.png' />*/}
       </Box>
 
-      {
-        item.Descuento_Producto &&
-        <ImgLabel label={item.Descuento_Producto} />
-      }
-      {
-        item.Es_Nuevo &&
-        <ImgLabel label='Nuevo' secondLabel/>
-      }
+      {/*{*/}
+      {/*  item.Descuento_Producto &&*/}
+      {/*  <ImgLabel label={item.Descuento_Producto} />*/}
+      {/*}*/}
+      {/*{*/}
+      {/*  item.Es_Nuevo &&*/}
+      {/*  <ImgLabel label='Nuevo' secondLabel/>*/}
+      {/*}*/}
       <Divider/>
       <CardContent>
         <Typography variant="caption" color="primary.dark">
           Torfresma
         </Typography>
         <Typography variant="h6">{item.Nombre_Producto}</Typography>
-        <Box sx={{ minHeight: '106px' }}>
+        <Box sx={{minHeight: '106px'}}>
           {
             item.Precio_Producto &&
             <>
@@ -121,7 +122,7 @@ function CarouselItem({ item }) {
           }
         </Box>
 
-        <Box sx={{ my: 2 }}>
+        <Box sx={{my: 2}}>
           <Typography variant='body1'>
             Nota:
           </Typography>
@@ -132,11 +133,11 @@ function CarouselItem({ item }) {
               <Typography>Horas de uso: 3/4</Typography>
             </>
           }>
-            <Box sx={{ display: 'flex', alignItems: 'center'}}>
+            <Box sx={{display: 'flex', alignItems: 'center'}}>
               <MilitaryTechIcon color='primary'/>
               <Typography variant='h5'>
                 6.7 /
-                <span style={{ fontSize: '16px', marginLeft: '5px' }}>7</span>
+                <span style={{fontSize: '16px', marginLeft: '5px'}}>7</span>
               </Typography>
             </Box>
           </Tooltip>
@@ -154,7 +155,22 @@ function CarouselItem({ item }) {
   );
 }
 
-function CarouselItemNews({ currentNew }) {
+function CarouselItemTeam({member}) {
+  return (
+    <Paper elevation={3} sx={{ mx: 2 }}>
+      <Box component='img' src={member.img} sx={{objectFit: 'contain'}} width={'100%'} height={200}/>
+      <Box sx={{p: 2}}>
+        <Typography variant='h6' align='center' fontWeight='bold' sx={{mb: 2}}>{member.name}</Typography>
+        <Typography fontSize='0.8rem' align='center' sx={{mb: 2}}>{member.role}</Typography>
+        <Typography variant='body1' align='center' sx={{mb: 2}}>
+          {member.desc.substring(0, 250).concat('...')}
+        </Typography>
+      </Box>
+    </Paper>
+  )
+}
+
+function CarouselItemNews({currentNew}) {
   const navigate = useNavigate();
 
   const formatTitle = (string) => {
@@ -171,7 +187,7 @@ function CarouselItemNews({ currentNew }) {
 
 
   return (
-    <Card  onClick={() => goToDetail(currentNew)} sx={{
+    <Card onClick={() => goToDetail(currentNew)} sx={{
       mx: 2,
       mb: 3,
       position: 'relative',
@@ -183,11 +199,11 @@ function CarouselItemNews({ currentNew }) {
       />
       <Divider/>
       <CardContent>
-        <Typography variant="h6" sx={{ mb: 2 }}>{formatTitle(currentNew.Titulo)}</Typography>
+        <Typography variant="h6" sx={{mb: 2}}>{formatTitle(currentNew.Titulo)}</Typography>
 
-        <Typography variant="h6" color="#527701" sx={{mb: 1}}>
-          {moment(currentNew.Fecha_Publicacion, 'YYYYMMDD').fromNow()}
-        </Typography>
+        {/*<Typography variant="h6" color="#527701" sx={{mb: 1}}>*/}
+        {/*  {moment(currentNew.Fecha_Publicacion, 'YYYYMMDD').fromNow()}*/}
+        {/*</Typography>*/}
       </CardContent>
     </Card>
   )
@@ -243,6 +259,15 @@ export default function CarouselCenterMode({type, arr}) {
         </Slider>
       </RootStyle>
     );
+  } else if (type === 'team') {
+    return (
+      <RootStyle>
+        <Slider ref={carouselRef} {...settings}>
+          {arr.map((item) => (
+            <CarouselItemTeam key={item.name} member={item}/>
+          ))}
+        </Slider>
+      </RootStyle>
+    )
   }
-
 }

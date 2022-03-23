@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "../../redux/store";
 import {Form, FormikProvider, useFormik} from "formik";
 import {ContactSchema} from "../../utils/formSchemas";
 import {Contact} from "../../redux/slices/formsSlice";
-import {Box, Button, Container, FormControl, Grid, MenuItem, Select, TextField, Typography} from "@mui/material";
+import {Box, Button, Container, FormControl, Grid, MenuItem, Paper, Select, TextField, Typography} from "@mui/material";
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ export default function ContactForm() {
 
   return (
     <Container sx={{py: {xs: 5}}}>
-      <Box maxWidth={800} width="100%" display="block" mx="auto">
+      <Paper maxWidth={800} width="100%" display="block" mx="auto" sx={{ backgroundColor: '#fff', p: 4 }}>
         <FormikProvider value={formik}>
           <Form autoComplete="off" novalidate onSubmit={handleSubmit}>
 
@@ -193,7 +193,7 @@ export default function ContactForm() {
             </Button>
           </Form>
         </FormikProvider>
-      </Box>
+      </Paper>
     </Container>
   )
 }
