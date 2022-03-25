@@ -209,17 +209,21 @@ export default function MenuMobile({isOffset, isHome, navConfig}) {
         PaperProps={{sx: {pb: 1, width: '100vw'}}}
       >
         <Scrollbar>
-          <Box sx={{display: 'flex', alignItems: 'center'}}>
+          <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 3}}>
             <Link component={RouterLink} to="/" sx={{display: "inline-flex"}}>
-              <Logo sx={{mx: PADDING, my: 3}}/>
+              <Box
+                component='img'
+                src='/static/icons/logo.png'
+                width={150}
+              />
             </Link>
-            <TextField
-              id="search"
-              label="Buscar…"
-              variant="outlined"
-              size="small"
-              fullWidth
-            />
+            {/*<TextField*/}
+            {/*  id="search"*/}
+            {/*  label="Buscar…"*/}
+            {/*  variant="outlined"*/}
+            {/*  size="small"*/}
+            {/*  fullWidth*/}
+            {/*/>*/}
             <IconButton onClick={handleDrawerClose} sx={{mx: 2}}>
               <CloseIcon color="primary"/>
             </IconButton>

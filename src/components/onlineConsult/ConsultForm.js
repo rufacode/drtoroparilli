@@ -12,16 +12,16 @@ export default function ConsultForm() {
   }, [state])
 
   return (
-   <Box sx={{my: {xs: 15, md: 0}, display: {md: 'grid'}, placeItems: {md: 'center'}, height: {md: '80vh'}}}>
-     <Paper elevation={3} sx={{p: 3}}>
-       <Typography>Email</Typography>
-       <TextField
+    <Box sx={{my: {xs: 15, md: 0}, display: {md: 'grid'}, placeItems: {md: 'center'}, height: {md: '80vh'}}}>
+      <Paper elevation={3} sx={{p: 3}}>
+        <Typography>Email</Typography>
+        <TextField
           fullWidth
           placeholder='ejemplo@123.com'
         />
-        <Button sx={{ mt: 2 }} variant='contained' fullWidth>Siguiente</Button>
+        <Button sx={{mt: 2}} variant='contained' fullWidth>Siguiente</Button>
       </Paper>
-   </Box>
+    </Box>
   )
 }
  

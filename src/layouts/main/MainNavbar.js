@@ -73,7 +73,11 @@ export default function MainNavbar() {
           }}
         >
           <RouterLink to="/">
-            <Logo/>
+            <Box
+              component='img'
+              src='/static/icons/logo.png'
+              width={150}
+            />
           </RouterLink>
 
           <Box sx={{flexGrow: 1}}/>

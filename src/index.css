@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "Interstate-bold";
+  /*font-style: normal;*/
+  /*src: local("Interstate-bold"),*/
+  src: url("/src/assets/fonts/Interstate-bold.ttf");
+  font-display: swap
+}
+
+@font-face {
+  font-family: "Interstate-light";
+  /*font-style: normal;*/
+  /*src: local("Interstate-light"),*/
+  src: url("/src/assets/fonts/Interstate-light.ttf");
+  font-display: swap
+}
+
+@font-face {
+  font-family: "InterstateRegular";
+  /*font-style: normal;*/
+  /*src: local("Interstate-regular"),*/
+  src: url("/src/assets/fonts/Interstate-regular.ttf");
+  font-display: swap
+}

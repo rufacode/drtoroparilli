@@ -38,7 +38,7 @@ export default function InfoModal({ data}) {
               // <Carousel data={data.images} />
               // <img src={data.images[1].url} alt=""/>
               <Box sx={{overflow: "hidden", position: "relative"}}>
-                <CarouselBasic3 items={data.images}/>
+                <CarouselBasic3 items={data.images} type='small'/>
               </Box>
             )
           }

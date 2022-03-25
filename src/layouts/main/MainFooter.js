@@ -99,14 +99,7 @@ export default function MainFooter() {
           }
         </SocialIconsWrapper>
       </MHidden>
-      <Button variant='outlined' onClick={goToConsult} sx={{
-        color: 'white',
-        border: '1px solid white' ,
-        ":hover" : {
-          border: '1px solid gray',
-          color: 'gray'
-        }
-      }}>
+      <Button variant='contained' onClick={goToConsult} >
         Consulta online
       </Button>
       {/*<Container  sx={{ py: 10 }}>*/}
