@@ -17,11 +17,11 @@ export const RootStyle = styled(Page)(({theme}) => ({
   height: "100%",
   width: "100%",
   position: "relative",
-  paddingTop: APP_BAR_MOBILE,
-  paddingBottom: APP_BAR_MOBILE,
+  paddingTop: APP_BAR_MOBILE * 2,
+  paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
-    paddingTop: APP_BAR_DESKTOP,
-    paddingBottom: APP_BAR_DESKTOP,
+    paddingTop: APP_BAR_DESKTOP * 2,
+    paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
 
@@ -59,7 +59,7 @@ export default function AboutUs() {
   return (
     <RootStyle title='Articulos'>
       <Container>
-        <Typography variant='h2'>
+        <Typography variant='h2' color='#fff' sx={{ pb: 2 }}>
           Sobre nosotros
         </Typography>
       </Container>

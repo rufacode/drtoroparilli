@@ -26,9 +26,11 @@ export const RootStyle = styled(Page)(({theme}) => ({
   height: "100%",
   width: "100%",
   position: "relative",
-  paddingTop: APP_BAR_MOBILE,
+  paddingTop: APP_BAR_MOBILE * 2,
+  paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
-    paddingTop: APP_BAR_DESKTOP,
+    paddingTop: APP_BAR_DESKTOP * 2,
+    paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
 
@@ -77,7 +79,7 @@ export default function BeforeAndAfter() {
   return (
     <RootStyle title='Antes y despues'>
       <Container>
-        <Typography variant='h2'>
+        <Typography variant='h2' fontWeight='bold' color='#fff' sx={{ mb: 3 }}>
           Antes y despues
         </Typography>
       </Container>

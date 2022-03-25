@@ -31,11 +31,11 @@ export const RootStyle = styled(Page)(({theme}) => ({
   height: "100%",
   width: "100%",
   position: "relative",
-  paddingTop: APP_BAR_MOBILE,
-  paddingBottom: APP_BAR_MOBILE,
+  paddingTop: APP_BAR_MOBILE * 2,
+  paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
-    paddingTop: APP_BAR_DESKTOP,
-    paddingBottom: APP_BAR_DESKTOP,
+    paddingTop: APP_BAR_DESKTOP * 2,
+    paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
 
@@ -56,7 +56,7 @@ export default function Doubts() {
   return (
     <RootStyle title='Articulos'>
       <Container>
-        <Typography variant='h2' >
+        <Typography variant='h2' fontWeight={'bold'} sx={{ mb: 2 }}>
           Tus dudas
         </Typography>
       </Container>
@@ -99,7 +99,7 @@ export default function Doubts() {
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Typography variant='h4'>{section.name}</Typography>
+          <Typography variant='h4' fontWeight='bold' sx={{ px: 4 }}>{section.name}</Typography>
           <QuestionsList data={section} />
         </Grid>
       </Grid>

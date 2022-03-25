@@ -13,7 +13,7 @@ export default function Parilli() {
 
   return (
     <Box sx={{ mt: 3 }}>
-      <Typography variant='h4'>
+      <Typography variant='h4' fontWeight='bold'>
         {parilliData.name}
       </Typography>
       <Typography variant='h6' sx={{ mb: 3 }}>
