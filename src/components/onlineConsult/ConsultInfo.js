@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import {Box, Button, Typography} from "@mui/material";
 import {MHidden} from "../@material-extend";
+import OnlineConsultOnline from "./OnlineConsultModal";
 
 export default function ConsultInfo() {
   const [state, setState] = useState(false);
@@ -13,7 +14,7 @@ export default function ConsultInfo() {
   }, [state])
 
   return (
-    <Box sx={{ p: 3, height: {md: '100vh'}, backgroundColor: '#307cceab', color: '#fff' }}>
+    <Box sx={{ p: 3, height: {md: '100%'}, backgroundColor: '#307cceab', color: '#fff' }}>
       <Typography variant='h1' color='#fff' align='center'>Consulta <br/> online</Typography>
       <MHidden width='mdDown'>
         <Typography sx={{ mt: 2 }} variant='body1'>
@@ -46,12 +47,7 @@ export default function ConsultInfo() {
         justifyContent: {xs: 'center', md: 'end'},
         mt: {md: 5, xs: 2}
       }}>
-        <Button
-          variant='contained'
-          size='small'
-        >
-          Reportar error
-        </Button>
+        <OnlineConsultOnline />
       </Box>
     </Box>
   )

@@ -22,6 +22,7 @@ import {updateImg} from "../redux/slices/backgroundImageSlice";
 import {doubtButton, generalData} from "../utils/mock-data/doubts";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import QuestionsList from "../components/doubts/QuestionsList";
+import QuestionModal from "../components/doubts/QuestionModal";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -55,7 +56,7 @@ export default function Doubts() {
   return (
     <RootStyle title='Articulos'>
       <Container>
-        <Typography variant='h2'>
+        <Typography variant='h2' >
           Tus dudas
         </Typography>
       </Container>
@@ -74,7 +75,7 @@ export default function Doubts() {
             <Grid container>
               {
                 doubtButton.map((el, i) => (
-                  <Grid item xs={12} md={6} key={i + 1}>
+                  <Grid item xs={12} sm={6} key={i + 1}>
                     <Button
                       fullWidth
                       sx={{ fontSize: '.85rem', mx: {md: 2}, my: 2 }}
@@ -87,13 +88,14 @@ export default function Doubts() {
                 ))
               }
             </Grid>
-            <Button
-              sx={{ fontSize: '.85rem', my: 2 }}
-              fullWidth
-              variant='contained'
-            >
-              ¿NO ACLARAMOS TUS DUDAS? CONSÚLTANOS
-            </Button>
+            <QuestionModal />
+            {/*<Button*/}
+            {/*  sx={{ fontSize: '.85rem', my: 2 }}*/}
+            {/*  fullWidth*/}
+            {/*  variant='contained'*/}
+            {/*>*/}
+            {/*  ¿NO ACLARAMOS TUS DUDAS? CONSÚLTANOS*/}
+            {/*</Button>*/}
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>

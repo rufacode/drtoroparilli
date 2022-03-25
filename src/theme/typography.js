@@ -20,9 +20,9 @@ function responsiveFontSizes({ sm, md, lg }) {
   };
 }
 
-const FONT_PRIMARY = "DINPro-Regular"; // Local Font
-const FONT_HEADERS = "Din-STD-Engschrift"; // Local Font
-const FONT_BOLD = "DINAlternate-Bold"; // Local Font
+const FONT_PRIMARY = "Interstate-regular"; // Local Font
+const FONT_HEADERS = "Interstate-light"; // Local Font
+const FONT_BOLD = "Interstate-bold"; // Local Font
 
 const typography = {
   fontFamily: FONT_PRIMARY,
