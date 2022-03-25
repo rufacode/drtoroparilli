@@ -6,7 +6,6 @@ import * as Scroll from 'react-scroll';
 
 export default function ProceduresList({state, fn}) {
   const [filtered, setFiltered] = useState([]);
-  // const [selectedItem, setSelectedItem] = useState({});
   const [selectedValue, setSelectedValue] = useState({
     name: '',
     id: null,
@@ -88,7 +87,7 @@ export default function ProceduresList({state, fn}) {
                 }
               </List>
             </Grid>
-            <Grid item xs={12} md={4} sx={{px: 1}}>
+            <Grid item xs={12} md={4} sx={{px: {xs: 0, md: 2}}}>
               <Typography variant='h4' align='center'> Tratamientos</Typography>
               <List>
                 {

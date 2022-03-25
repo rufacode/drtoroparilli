@@ -14,11 +14,14 @@ export const RootStyle = styled(Page)(({theme}) => ({
   height: "100%",
   width: "100%",
   position: "relative",
-  paddingTop: APP_BAR_MOBILE,
+  paddingTop: APP_BAR_MOBILE * 2,
+  paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
-    paddingTop: APP_BAR_DESKTOP,
+    paddingTop: APP_BAR_DESKTOP * 2,
+    paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
+
 
 
 

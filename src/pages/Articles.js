@@ -15,13 +15,22 @@ export const RootStyle = styled(Page)(({theme}) => ({
   height: "100%",
   width: "100%",
   position: "relative",
-  paddingTop: APP_BAR_MOBILE,
-  paddingBottom: APP_BAR_MOBILE,
+  paddingTop: APP_BAR_MOBILE * 2,
+  paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
     paddingTop: APP_BAR_DESKTOP * 2,
     paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
+export const SpecialBox = styled(Box)(({theme}) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  [theme.breakpoints.down("md")]: {
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+}))
+
 
 
 export default function Articles() {
@@ -37,11 +46,11 @@ export default function Articles() {
   return (
     <RootStyle title='Articulos'>
       <Container>
-        <Box sx={{display: 'flex', justifyContent: 'space-between', mb: 4}}>
-          <Typography variant='h1'>Articulos</Typography>
-          <Box xs={{display: 'flex', alignItems: 'center'}}>
+        <SpecialBox sx={{ mb: 4}}>
+          <Typography variant='h1' sx={{ mb: 2 }}>Articulos</Typography>
+          <SpecialBox >
             <Select
-              sx={{ mx: 1 }}
+              sx={{ mx: 1, mb: {xs: 2, md: 0}  }}
               labelId="howDidYouKnow"
               id="howDidYouKnow"
               size='small'
@@ -56,13 +65,13 @@ export default function Articles() {
               <MenuItem value='Vegano'>Vegano</MenuItem>
             </Select>
             <Button
-              sx={{ mx: 1 }}
+              sx={{ mx: 1,  mb: {xs: 2, md: 0} }}
               variant={sex === 'hombre' ? 'contained' : 'outlined' }
               onClick={() => setSex('hombre')}
             >
               Hombre</Button>
             <Button
-              sx={{ mx: 1 }}
+              sx={{ mx: 1,  mb: {xs: 2, md: 0} }}
               variant={sex === 'mujer' ? 'contained' : 'outlined' }
               onClick={() => setSex('mujer')}
             >
@@ -70,8 +79,8 @@ export default function Articles() {
             <IconButton>
               <SendIcon color='primary'/>
             </IconButton>
-          </Box>
-        </Box>
+          </SpecialBox>
+        </SpecialBox>
         <Grid container spacing={2}>
           {
             [...Array.from('asdasdasd')].map((el, i) => (

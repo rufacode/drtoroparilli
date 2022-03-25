@@ -38,8 +38,8 @@ export default function QuestionModal() {
       >
         ¿No aclaramos tus dudas? Consúltanos</Button>
       <Dialog onClose={handleClose} open={openPreview} fullWidth maxWidth="sm">
-        <Box sx={{ display : 'flex', justifyContent: 'space-between', p: 1 }}>
-          <DialogTitle sx={{ textAlign: 'center' }}>¿NO ACLARAMOS TUS DUDAS? CONSÚLTANOS</DialogTitle>
+        <Box sx={{ display : 'flex', justifyContent: 'space-between', alignItems: 'center', p: 4 }}>
+          <Typography sx={{ textAlign: 'center' }}>¿NO ACLARAMOS TUS DUDAS? CONSÚLTANOS</Typography>
           <IconButton onClick={handleClose} sx={{ p: 1.5}} color='secondary'>
             <DisabledByDefaultIcon />
           </IconButton>

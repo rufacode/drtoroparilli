@@ -1,14 +1,10 @@
 import {styled} from "@mui/material/styles";
 import Page from "../components/Page";
-import {useDispatch, useSelector} from "../redux/store";
+import {useDispatch} from "../redux/store";
 import {useEffect} from "react";
-import {getSomeData} from "../redux/slices/exampleSlice";
-import {CarouselBasic3} from "../components/carousel/index";
-import {Box, Divider} from "@mui/material";
-import ContactWidget from "../components/home/Contact";
-import News from "../components/home/News";
-import Team from "../components/home/Team";
-import ParilliHome from "../components/home/ParilliHome";
+import {Box, Grid, Typography} from "@mui/material";
+import {updateImg} from "../redux/slices/backgroundImageSlice";
+import {useNavigate} from "react-router-dom";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
@@ -23,50 +19,96 @@ export const RootStyle = styled(Page)(({theme}) => ({
   },
 }))
 
+export const SpecialGrid = styled(Grid)(({theme}) => ({
+  "&:hover" : {
+    cursor: 'pointer',
+    ".preview" : {
+      opacity: 0.5,
+      backgroundColor: 'black',
+    }
+  },
+  [theme.breakpoints.up("md")]: {
+  },
+}))
+
 const arrayImages = [
   {
-    url: '/static/img/articles.jpg',
     id: 123,
     title: 'Antes y despues',
     link: '/antes-y-despues',
-    list: [
-      {text: 'Gluteoplastia'},
-      {text: 'Cirugia del abdomen'},
-      {text: 'Liposuccion laser'},
-      {text: 'Cirugia de nariz'},
-      {text: 'Lifting facial'},
-      {text: 'Cirugia de parpados'},
-      {text: 'Aumento de mamas'},
-    ],
-    previewImg: '/static/img/antes-despues-index.jpg',
-    text: 'Contamos con una diversa galeria de casos de exito que demuestra nuestra experiencia y nivel de trabajo.'
+    url: '/static/img/antes-despues-index.jpg',
   },
-  {url: '/static/img/before-after.jpg', id: 145},
-  {url: '/static/img/dudas.jpg', id: 167},
-  {url: '/static/img/contacto.jpg', id: 1890},
+  {
+    id: 145,
+    title: 'El equipo',
+    link: '/nosotros',
+    url: '/static/img/team-preview.jpg',
+  },
+  {
+    url: '/static/img/consulta-preview.jpg',
+    id: 167,
+    link: '/consulta-online',
+    title: 'Consulta Online'
+  },
+  {
+    url: '/static/img/contacto.jpg',
+    id: 1890,
+    link: '/procedimientos',
+    title: 'Procedimientos',
+  },
+  {
+    url: '/static/img/article-preview.jpg',
+    id: 1890,
+    link: '/articulos',
+    title: 'Articulos',
+  },
 ]
-
 
 
 export default function LandingPage() {
   const dispatch = useDispatch();
-  const {questions, isLoading} = useSelector(state => state.example)
+  const navigate = useNavigate()
 
+  function goTo(route) {
+    navigate(route);
+  }
 
-
-  // useEffect(() => {
-  //   async function getData () {
-  //     // some stuff
-  //     await dispatch(getSomeData())
-  //   }
-  // })
+  useEffect(() => {
+    dispatch(updateImg(''))
+  })
 
 
   return (
     <RootStyle title="Dr. Toro Parilli" id="move_top">
-      <Box sx={{overflow: "hidden", position: "relative"}}>
-        <CarouselBasic3 items={arrayImages} type='big' />
+      <Box sx={{position: "relative", minHeight: '100vh', maxHeight: '100%'}}>
+        {/*<CarouselBasic3 items={arrayImages} type='big' />*/}
+
+        <Box
+          component='img'
+          sx={{width: '100%', height: '100%', objectFit: 'cover', opacity: '0.6', position: 'absolute', zIndex: -1}}
+          src='/static/img/before-after.jpg'
+        />
+        <Grid container maxWidth='lg' align='center' justify='center' spacing={2} justifySelf='center'
+              sx={{display: 'flex', justifyContent: 'center', mt: 0.2, pt: 10, pb: 10, mx: 'auto'}}>
+          {
+            arrayImages.map((el, i) => (
+              <SpecialGrid item xs={12} md={4} sx={{ px: 5, pb: 5 }} onClick={() => goTo(el.link)}>
+                <Typography
+                  variant='h6'
+                  fontWeight='bold'
+                  color='primary'
+                  sx={{backgroundColor: "rgba(255,255,255, 0.6);", p: 1}}
+                >
+                  {el.title}
+                </Typography>
+                <Box classsName='preview' component='img' width='100%' height={200} src={el.url} alt=""/>
+              </SpecialGrid>
+            ))
+          }
+        </Grid>
       </Box>
+
+
       {/*<ParilliHome />*/}
       {/*<Divider sx={{ my: 2 }} />*/}
       {/*<Team />*/}
