@@ -18,6 +18,7 @@ export default function ContactForm() {
       lastname: "",
       email: "",
       homePhone: "",
+      where: '',
       phone: "",
       message: "",
       document: "",
@@ -47,14 +48,14 @@ export default function ContactForm() {
     formik;
 
   return (
-    <Container sx={{py: {xs: 5}}}>
+    <Container >
       <Paper maxWidth={800} width="100%" display="block" mx="auto" sx={{ backgroundColor: '#fff', p: 4 }}>
         <FormikProvider value={formik}>
           <Form autoComplete="off" novalidate onSubmit={handleSubmit}>
 
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">Nombre *</Typography>
+                <Typography variant="body1" fontWeight='600'>Nombre *</Typography>
                 <TextField
                   fullWidth
                   type="text"
@@ -67,7 +68,7 @@ export default function ContactForm() {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">Apellido *</Typography>
+                <Typography variant="body1" fontWeight='600'>Apellido *</Typography>
                 <TextField
                   fullWidth
                   type="text"
@@ -80,7 +81,7 @@ export default function ContactForm() {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">Teléfono fijo *</Typography>
+                <Typography variant="body1" fontWeight='600'>Teléfono fijo *</Typography>
                 <TextField
                   fullWidth
                   type="text"
@@ -94,7 +95,7 @@ export default function ContactForm() {
               </Grid>
               <Grid item xs={12} md={6}>
 
-                <Typography variant="body1">Teléfono de contacto *</Typography>
+                <Typography variant="body1" fontWeight='600'>Teléfono de contacto *</Typography>
                 <TextField
                   fullWidth
                   type="text"
@@ -108,7 +109,7 @@ export default function ContactForm() {
               </Grid>
               <Grid item xs={12} md={6}>
 
-                <Typography variant="body1">Email *</Typography>
+                <Typography variant="body1" fontWeight='600'>Email *</Typography>
                 <TextField
                   fullWidth
                   type="text"
@@ -122,7 +123,7 @@ export default function ContactForm() {
               </Grid>
               <Grid item xs={12} md={6}>
 
-                <Typography variant="body1">DNI / Cedula *</Typography>
+                <Typography variant="body1" fontWeight='600'>DNI / Cedula *</Typography>
                 <TextField
                   fullWidth
                   type="text"
@@ -135,7 +136,7 @@ export default function ContactForm() {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">Asunto *</Typography>
+                <Typography variant="body1" fontWeight='600'>Asunto *</Typography>
                 <TextField
                   fullWidth
                   type="text"
@@ -148,7 +149,7 @@ export default function ContactForm() {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">¿Como se entero de nosotros? *</Typography>
+                <Typography variant="body1" fontWeight='600'>¿Como se entero de nosotros? *</Typography>
                 <FormControl variant="outlined" sx={{ mb: 2 }} fullWidth>
                   <Select
                     labelId="howDidYouKnow"
@@ -167,7 +168,23 @@ export default function ContactForm() {
               </Grid>
             </Grid>
 
-            <Typography variant="body1">Mensaje</Typography>
+            <Grid item xs={12}>
+              <Typography variant="body1" fontWeight='600'>¿Donde se quiere operar? *</Typography>
+              <FormControl variant="outlined" sx={{ mb: 2 }} fullWidth>
+                <Select
+                  labelId="where"
+                  id="where"
+                  size='small'
+                  {...getFieldProps("where")}
+                >
+                  <MenuItem value=''>Seleccione una opcion</MenuItem>
+                  <MenuItem value='Venezuela'>Venezuela</MenuItem>
+                  <MenuItem value='Republica Dominicana'>Republica Dominicana</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+
+            <Typography variant="body1" fontWeight='600'>Mensaje</Typography>
             <TextField
               fullWidth
               multiline

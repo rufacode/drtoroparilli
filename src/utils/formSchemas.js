@@ -10,4 +10,5 @@ export const ContactSchema = Yup.object().shape({
   reason: Yup.string().required('Este campo es requerido'),
   howDidYouKnow: Yup.string().required('Este campo es requerido'),
   message: Yup.string().required('Este campo es requerido'),
+  where: Yup.string().required('Este campo es requerido'),
 });

@@ -14,7 +14,7 @@ export default function ConsultForm() {
   return (
     <Box sx={{my: {xs: 15, md: 0}, display: {md: 'grid'}, placeItems: {md: 'center'}, height: {md: '80vh'}}}>
       <Paper elevation={3} sx={{p: 3}}>
-        <Typography>Email</Typography>
+        <Typography variant='body1' fontWeight='600'>Email</Typography>
         <TextField
           fullWidth
           placeholder='ejemplo@123.com'

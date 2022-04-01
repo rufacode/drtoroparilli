@@ -34,7 +34,7 @@ export default function QuestionsList({data}) {
                   id="panel1a-header"
                 >
                   <Circle sx={{p: '10px'}}>{index + 1}</Circle>
-                  <Typography  sx={{lineHeight: 1.8, textTransform: 'uppercase', fontFamily: 'InterstateRegular'}}>
+                  <Typography variant='body1' fontWeight='600' sx={{lineHeight: 1.8, textTransform: 'uppercase', fontFamily: 'InterstateRegular'}}>
                     {el.title}
                   </Typography>
                 </AccordionSummary>

@@ -17,7 +17,7 @@ export const RootStyle = styled(Page)(({theme}) => ({
   paddingTop: APP_BAR_MOBILE * 2,
   paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
-    paddingTop: APP_BAR_DESKTOP * 2,
+    paddingTop: APP_BAR_DESKTOP * 1.5,
     paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
@@ -35,10 +35,10 @@ export default function Contact() {
   return (
     <RootStyle>
       <Container>
-        <Typography variant="h1" sx={{mb: 2}} >
+        <Typography variant="h1" fontWeight='bold'  >
           Contacto
         </Typography>
-        <Grid container spacing={4} alignItems='center'>
+        <Grid container spacing={4} sx={{mt: 2}}>
           <Grid item xs={12} md={6}>
             <ContactForm />
           </Grid>

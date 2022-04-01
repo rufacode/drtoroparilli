@@ -39,7 +39,7 @@ export default function QuestionModal() {
         ¿No aclaramos tus dudas? Consúltanos</Button>
       <Dialog onClose={handleClose} open={openPreview} fullWidth maxWidth="sm">
         <Box sx={{ display : 'flex', justifyContent: 'space-between', alignItems: 'center', p: 4 }}>
-          <Typography sx={{ textAlign: 'center' }}>¿NO ACLARAMOS TUS DUDAS? CONSÚLTANOS</Typography>
+          <Typography variant='h6' fontWeight='600' sx={{ textAlign: 'center' }}>¿NO ACLARAMOS TUS DUDAS? CONSÚLTANOS</Typography>
           <IconButton onClick={handleClose} sx={{ p: 1.5}} color='secondary'>
             <DisabledByDefaultIcon />
           </IconButton>
@@ -47,28 +47,28 @@ export default function QuestionModal() {
         <DialogContent>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <Typography>Nombre</Typography>
+              <Typography variant='body1' fontWeight='600'>Nombre</Typography>
               <TextField
                 fullWidth
                 type='text'
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography>Apellido</Typography>
+              <Typography variant='body1' fontWeight='600'>Apellido</Typography>
               <TextField
                 fullWidth
                 type='text'
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography>Email</Typography>
+              <Typography variant='body1' fontWeight='600'>Email</Typography>
               <TextField
                 fullWidth
                 type='text'
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography>Procedimientos</Typography>
+              <Typography variant='body1' fontWeight='600'>Procedimientos</Typography>
               <FormControl variant="outlined" sx={{ mb: 2 }} fullWidth>
                 <Select
                   labelId="Procedures"
@@ -88,7 +88,7 @@ export default function QuestionModal() {
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <Typography>Mensaje</Typography>
+              <Typography variant='body1' fontWeight='600'>Mensaje</Typography>
               <TextField
                 fullWidth
                 type='text'

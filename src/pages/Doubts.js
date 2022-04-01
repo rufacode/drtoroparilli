@@ -34,7 +34,7 @@ export const RootStyle = styled(Page)(({theme}) => ({
   paddingTop: APP_BAR_MOBILE * 2,
   paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
-    paddingTop: APP_BAR_DESKTOP * 2,
+    paddingTop: APP_BAR_DESKTOP * 1.5,
     paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
@@ -56,7 +56,7 @@ export default function Doubts() {
   return (
     <RootStyle title='Articulos'>
       <Container>
-        <Typography variant='h2' fontWeight={'bold'} sx={{ mb: 2 }}>
+        <Typography variant='h1' fontWeight='bold' sx={{ mb: 2 }}>
           Tus dudas
         </Typography>
       </Container>

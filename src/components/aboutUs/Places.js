@@ -14,10 +14,10 @@ export default function Places() {
 
   return (
     <Box sx={{mt: 3}}>
-      <Typography variant='h4'>
+      <Typography variant='h4' fontWeight='bold'>
         INSTALACIONES
       </Typography>
-      <Typography variant='body2' sx={{mb: 3}}>
+      <Typography variant='body1' sx={{mb: 3}}>
         Conoce nuestras instalaciones, diseñadas para dar máxima comodidad y la mejor atención médica al paciente.
       </Typography>
       <Box sx={{overflowY: 'auto', maxHeight: '305px', px: 2}}>
@@ -35,7 +35,7 @@ export default function Places() {
                   cursor: 'pointer'
                 }
               }}>
-                <Typography  variant='body2'>{place.title}</Typography>
+                <Typography  variant='body2' fontWeight='bold'>{place.title}</Typography>
                 <Typography  variant='caption'>{place.place}</Typography>
                 <InfoModal data={place} />
               </Grid>

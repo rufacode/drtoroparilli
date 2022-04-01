@@ -17,7 +17,7 @@ const RootStyle = styled("div")(({ theme }) => ({
   position: "fixed",
   display: 'flex',
   justifyContent: 'space-between',
-  padding: '1.5rem',
+  padding: '0  1.5rem  1.5rem 1.5rem',
   width: '100%',
   bottom: 0,
   // boxShadow: '0px -5px 6px -3px lightgray',

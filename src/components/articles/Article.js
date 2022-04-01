@@ -24,7 +24,7 @@ export default function Article() {
         alt=""
       />
       <Box sx={{ p: 3 }}>
-        <Typography variant='h5' sx={{ mb: 2 }} fontWeight={'bold'}>{TITLE}</Typography>
+        <Typography variant='h5' sx={{ mb: 2 }} fontWeight='bold'>{TITLE}</Typography>
         <Typography variant='body1' >{CONTENT.substring(0, 200).concat('...')}</Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Button variant='contained' sx={{ mt: 3 }}>Ver mas</Button>

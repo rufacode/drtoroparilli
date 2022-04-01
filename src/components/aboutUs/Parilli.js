@@ -16,13 +16,13 @@ export default function Parilli() {
       <Typography variant='h4' fontWeight='bold'>
         {parilliData.name}
       </Typography>
-      <Typography variant='h6' sx={{ mb: 3 }}>
+      <Typography variant='h6' fontWeight='600' sx={{ mb: 3 }}>
         {parilliData.role}
       </Typography>
       <Box sx={{ overflowY: 'auto', maxHeight: '305px' }}>
         {
           parilliData.text.map((el, i) => (
-            <Typography sx={{ mt: 2 }}>
+            <Typography variant='body1' sx={{ mt: 2 }}>
               {el.content}
             </Typography>
           ))

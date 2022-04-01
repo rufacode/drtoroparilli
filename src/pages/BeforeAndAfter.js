@@ -29,23 +29,10 @@ export const RootStyle = styled(Page)(({theme}) => ({
   paddingTop: APP_BAR_MOBILE * 2,
   paddingBottom: APP_BAR_MOBILE * 2,
   [theme.breakpoints.up("md")]: {
-    paddingTop: APP_BAR_DESKTOP * 2,
+    paddingTop: APP_BAR_DESKTOP * 1.5,
     paddingBottom: APP_BAR_DESKTOP * 2,
   },
 }))
-
-function Male() {
-  return (
-    <Box>hello from male</Box>
-  )
-}
-
-function Female() {
-  return (
-    <Box>hello from female</Box>
-  )
-}
-
 
 export default function BeforeAndAfter() {
   const dispatch = useDispatch();
@@ -79,7 +66,7 @@ export default function BeforeAndAfter() {
   return (
     <RootStyle title='Antes y despues'>
       <Container>
-        <Typography variant='h2' fontWeight='bold' color='#fff' sx={{ mb: 3 }}>
+        <Typography variant='h1' fontWeight='bold' color='#fff' sx={{ mb: 3 }}>
           Antes y despues
         </Typography>
       </Container>
@@ -125,7 +112,7 @@ export default function BeforeAndAfter() {
                       selected={el.id === selectedValue.id}
                     >
                       <ListItemText sx={{textAlign: 'center'}}>
-                        {el.name}
+                        <Typography variant='body1' fontWeight='600'>{el.name}</Typography>
                       </ListItemText>
                     </ListItemButton>
                     <Divider/>
