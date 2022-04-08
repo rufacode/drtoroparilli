@@ -11,11 +11,12 @@ const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
 
  const RootStyle = styled(Page)(({theme}) => ({
-  height: "90vh",
+  height: "100%",
   width: "100%",
   position: "relative",
   paddingTop: APP_BAR_MOBILE,
   [theme.breakpoints.up("md")]: {
+    height: "80vh",
     paddingTop: APP_BAR_DESKTOP,
   },
 }))
