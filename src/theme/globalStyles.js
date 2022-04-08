@@ -24,7 +24,8 @@ export default function GlobalStyles() {
         },
         html: {
           width: '100%',
-          height: '100%',
+          height: 'fit-content',
+          overflowX: 'hidden',
           WebkitOverflowScrolling: 'touch'
         },
         body: {
