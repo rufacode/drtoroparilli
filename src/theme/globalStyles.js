@@ -38,7 +38,7 @@ export default function GlobalStyles() {
           backdropFilter: 'blur(5px)',
           height: 'fit-content',
           overflowX: 'hidden',
-          overflowY: pathname === '/consulta-online' || pathname === '/' ? 'hidden' : 'scroll',
+          overflowY: pathname === '/consulta-online' || pathname === '/' ? 'hidden' : 'auto',
 
           // "&::-webkit-scrollbar": {
           //   width: '1em',
