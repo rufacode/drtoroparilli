@@ -2,11 +2,15 @@
 import { useTheme } from '@mui/material/styles';
 import { GlobalStyles as GlobalThemeStyles } from '@mui/material';
 import {useSelector} from "../redux/store";
+import { useLocation } from 'react-router-dom';
 
 // ----------------------------------------------------------------------
 
 export default function GlobalStyles() {
   const { backgroundImage } = useSelector(state => state.backgroundImage)
+  const { pathname } = useLocation();
+
+  console.log(pathname)
 
   const theme = useTheme();
 
@@ -24,10 +28,16 @@ export default function GlobalStyles() {
           WebkitOverflowScrolling: 'touch'
         },
         body: {
-          background: `url(${backgroundImage}) no-repeat  fixed`,
-          backgroundSize: '100% 100%',
           width: '100%',
-          height: '100%',
+          background: `url(${backgroundImage}) no-repeat  fixed`,
+          [theme.breakpoints.down('md')]: {
+            backgroundSize: 'cover',
+          },
+           backgroundSize: '100% 100%',
+          backdropFilter: 'blur(5px)',
+          height: 'fit-content',
+          overflowX: 'hidden',
+          overflowY: pathname === '/consulta-online' || pathname === '/' ? 'hidden' : 'scroll',
 
           // "&::-webkit-scrollbar": {
           //   width: '1em',

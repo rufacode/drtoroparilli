@@ -19,7 +19,7 @@ import {useNavigate} from "react-router-dom";
 //   imageMobile: mockData.image.banner(index),
 //   description: mockData.text.description(index),
 // }));
-
+//SOLO PARA EL CAROUSEL DE IMAGENES DE LANDING PAGE
 const RootStyle = styled("div", {
   shouldForwardProp : (type) => type, })(({theme, type}) => ({
   position: "relative",
@@ -48,36 +48,36 @@ function CarouselItem({item}) {
 
 
   return (
-    <Box sx={{ position: 'relative', height: '100vh' }}>
+    <Box sx={{ position: 'relative', height: '100vh', pointerEvents: 'none' }}>
       <Box
         component='img'
-        sx={{width: '100%', height: '100%', objectFit: 'cover', opacity: '0.6', position: 'absolute', zIndex: -1 }}
+        sx={{width: '100%', height: '100%', objectFit: 'cover', opacity: '0.6', position: 'absolute', zIndex: -1, filter: 'blur(10px)' }}
         src={item.url}
       />
-      <Box sx={{ display: 'grid', placeItems: 'center', height: '100%' }}>
-        <Grid container spacing={6} sx={{ px: 10 }}>
-          <Grid item xs={12} md={6}>
-            <Typography variant='h3' sx={{ mb: 2 }}>{item.title}</Typography>
-            <Typography variant='h6' sx={{ mb: 2 }}>{item.text}</Typography>
-            {
-              item.list && item.list.map((el, i) => (
-                <Typography key={i + 1}  variant='body1'>- {el.text}</Typography>
-              ))
-            }
-            <Box display='flex' justifyContent='center'>
-              <Button onClick={() => goTo(item.link)} sx={{ my: 4}} variant='contained'>Ver mas</Button>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box
-              component='img'
-              width='100%'
-              sx={{  maxHeight: '400px', borderRadius: '15px'}}
-              src={item.previewImg}
-            />
-          </Grid>
-        </Grid>
-      </Box>
+      {/*<Box sx={{ display: 'grid', placeItems: 'center', height: '100%' }}>*/}
+      {/*  <Grid container spacing={6} sx={{ px: 10 }}>*/}
+      {/*    <Grid item xs={12} md={6}>*/}
+      {/*      <Typography variant='h3' sx={{ mb: 2 }}>{item.title}</Typography>*/}
+      {/*      <Typography variant='h6' sx={{ mb: 2 }}>{item.text}</Typography>*/}
+      {/*      {*/}
+      {/*        item.list && item.list.map((el, i) => (*/}
+      {/*          <Typography key={i + 1}  variant='body1'>- {el.text}</Typography>*/}
+      {/*        ))*/}
+      {/*      }*/}
+      {/*      <Box display='flex' justifyContent='center'>*/}
+      {/*        <Button onClick={() => goTo(item.link)} sx={{ my: 4}} variant='contained'>Ver mas</Button>*/}
+      {/*      </Box>*/}
+      {/*    </Grid>*/}
+      {/*    <Grid item xs={12} md={6}>*/}
+      {/*      <Box*/}
+      {/*        component='img'*/}
+      {/*        width='100%'*/}
+      {/*        sx={{  maxHeight: '400px', borderRadius: '15px'}}*/}
+      {/*        src={item.previewImg}*/}
+      {/*      />*/}
+      {/*    </Grid>*/}
+      {/*  </Grid>*/}
+      {/*</Box>*/}
     </Box>
 
   );
@@ -102,6 +102,7 @@ export default function CarouselBasic3({items, type}) {
   const settings = {
     dots: type === 'small',
     arrows: false,
+    fade: true,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,

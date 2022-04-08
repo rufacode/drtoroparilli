@@ -5,11 +5,12 @@ import {useEffect} from "react";
 import {Box, Grid, Typography} from "@mui/material";
 import {updateImg} from "../redux/slices/backgroundImageSlice";
 import {useNavigate} from "react-router-dom";
+import {CarouselBasic3} from "../components/carousel/index";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 88;
 
-export const RootStyle = styled(Page)(({theme}) => ({
+ const RootStyle = styled(Page)(({theme}) => ({
   height: "100%",
   width: "100%",
   position: "relative",
@@ -19,17 +20,25 @@ export const RootStyle = styled(Page)(({theme}) => ({
   },
 }))
 
-export const SpecialGrid = styled(Grid)(({theme}) => ({
+ const SpecialGrid = styled(Grid)(({theme}) => ({
+    "&.preview" : {
+     
+    },
   "&:hover" : {
     cursor: 'pointer',
-    ".preview" : {
-      opacity: 0.5,
-      backgroundColor: 'black',
-    }
   },
   [theme.breakpoints.up("md")]: {
   },
 }))
+
+const arrayImagesCarousel = [
+
+  {url: '/static/img/articles.jpg', id: 123},
+  {url: '/static/img/before-after.jpg', id: 145},
+  {url: '/static/img/dudas.jpg', id: 167},
+  {url: '/static/img/contacto.jpg', id: 1890},
+
+]
 
 const arrayImages = [
   {
@@ -56,12 +65,6 @@ const arrayImages = [
     link: '/procedimientos',
     title: 'Procedimientos',
   },
-  {
-    url: '/static/img/article-preview.jpg',
-    id: 1890,
-    link: '/articulos',
-    title: 'Articulos',
-  },
 ]
 
 
@@ -80,32 +83,35 @@ export default function LandingPage() {
 
   return (
     <RootStyle title="Dr. Toro Parilli" id="move_top">
-      <Box sx={{position: "relative", minHeight: '100vh', maxHeight: '100%'}}>
-        {/*<CarouselBasic3 items={arrayImages} type='big' />*/}
+      <Box sx={{position: "relative", height: '100%'}}>
+        <CarouselBasic3 items={arrayImagesCarousel} type='big' />
 
-        <Box
-          component='img'
-          sx={{width: '100%', height: '100%', objectFit: 'cover', opacity: '0.6', position: 'absolute', zIndex: -1}}
-          src='/static/img/before-after.jpg'
-        />
-        <Grid container maxWidth='lg' align='center' justify='center' spacing={2} justifySelf='center'
-              sx={{display: 'flex', justifyContent: 'center', mt: 0.2, pt: 10, pb: 10, mx: 'auto'}}>
-          {
-            arrayImages.map((el, i) => (
-              <SpecialGrid item xs={12} md={4} sx={{ px: 5, pb: 5 }} onClick={() => goTo(el.link)}>
-                <Typography
-                  variant='h6'
-                  fontWeight='bold'
-                  color='primary'
-                  sx={{backgroundColor: "rgba(255,255,255, 0.6);", p: 1}}
-                >
-                  {el.title}
-                </Typography>
-                <Box classsName='preview' component='img' width='100%' height={200} src={el.url} alt=""/>
-              </SpecialGrid>
-            ))
-          }
-        </Grid>
+        {/*<Box*/}
+        {/*  component='img'*/}
+        {/*  sx={{width: '100%', height: '100%', objectFit: 'cover', opacity: '0.6', position: 'absolute', zIndex: -1}}*/}
+        {/*  src='/static/img/before-after.jpg'*/}
+        {/*/>*/}
+        <Box sx={{  zIndex: 111, position: 'absolute', top: 0, width: '100%' }}>
+          <Grid container maxWidth='lg' align='center' justify='center' spacing={2} justifySelf='center'
+                sx={{display: 'flex', justifyContent: 'center', mt: 0.2, pt: 10, pb: 10, mx: 'auto', height: {xs: '500px', md: 'auto'}, overflowY: {xs:  'scroll', md: 'hidden'} }}>
+            {
+              arrayImages.map((el, i) => (
+                <SpecialGrid item xs={12} md={3} sx={{ px: 5, pb: 5 }} onClick={() => goTo(el.link)}>
+                  <Typography
+                    variant='h6'
+                    fontWeight='bold'
+                    color='primary'
+                    sx={{backgroundColor: "rgba(255,255,255, 0.6);", p: 1}}
+                  >
+                    {el.title}
+                  </Typography>
+                  <Box sx={{ objectFit: 'contain' }} component='img' width={200} height={200} src={el.url} alt=""/>
+                </SpecialGrid>
+              ))
+            }
+          </Grid>
+        </Box>
+
       </Box>
 
 
