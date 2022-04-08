@@ -93,7 +93,7 @@ export default function LandingPage() {
         {/*/>*/}
         <Box sx={{  zIndex: 111, position: 'absolute', top: 0, width: '100%' }}>
           <Grid container maxWidth='lg' align='center' justify='center' spacing={2} justifySelf='center'
-                sx={{display: 'flex', justifyContent: 'center', mt: 0.2, pt: 10, pb: 10, mx: 'auto', height: {xs: '500px', md: 'auto'}, overflowY: {xs:  'scroll', md: 'hidden'} }}>
+                sx={{display: 'flex', justifyContent: 'center', mt: 0.2, pt: 10, pb: 10, mx: 'auto', height: {xs: '600px', md: 'auto'}, overflowY: {xs:  'scroll', md: 'hidden'} }}>
             {
               arrayImages.map((el, i) => (
                 <SpecialGrid item xs={12} md={3} sx={{ px: 5, pb: 5 }} onClick={() => goTo(el.link)}>

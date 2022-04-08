@@ -11,6 +11,13 @@ import Logo from "../../components/Logo";
 // import SvgIconStyle from "../../components/SvgIconStyle";
 import MHidden from "../../components/@material-extend/MHidden";
 
+
+const socialIcons = [
+  {img: '/static/icons/facebook-logo.png', id: 1},
+  {img: '/static/icons/instagram-icon.png', id: 2},
+  {img: '/static/icons/twitter-logo.png', id: 3},
+]
+
 // ----------------------------------------------------------------------
 
 const RootStyle = styled("div")(({ theme }) => ({
@@ -87,15 +94,16 @@ export default function MainFooter() {
       <MHidden width='mdDown'>
         <SocialIconsWrapper >
           {
-            [...Array(3)].map((icon, i) => (
-              <img
-                src="/static/icons/facebook-logo.png"
-                key={i + 1}
-                width={30}
-                style={{ margin: '0 .5rem ' }}
-                alt="facebook logo"/>
+            socialIcons.map((icon) => (
+              <Box
+              component="img"
+              src={icon.img}
+              key={icon.id}
+              width={50}
+              height={50}
+              sx={{ m: '0 .5rem ', filter: 'grayscale(100%)' }}
+              alt="social icon"/>
             ))
-
           }
         </SocialIconsWrapper>
       </MHidden>
