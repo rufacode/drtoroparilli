@@ -26,6 +26,7 @@ export default function GlobalStyles() {
           width: '100%',
           height: 'fit-content',
           overflowX: 'hidden',
+          overflowY: pathname === '/consulta-online' || pathname === '/' ? 'hidden' : 'auto',
           WebkitOverflowScrolling: 'touch'
         },
         body: {
