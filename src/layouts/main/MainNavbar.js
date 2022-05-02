@@ -1,19 +1,18 @@
 import {Link as RouterLink, useLocation} from "react-router-dom";
 // material
 import {styled} from "@mui/material/styles";
-import {AppBar, Badge, Box, IconButton, Toolbar} from "@mui/material";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import SearchIcon from '@mui/icons-material/Search';
+import {AppBar, Box, Toolbar} from "@mui/material";
 // hooks
 import useOffSetTop from "../../hooks/useOffSetTop";
 // mantenedorAdmin
-import Logo from "../../components/Logo";
 import {MHidden} from "../../components/@material-extend";
 //
 import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
 import navConfig from "./MenuConfig";
 // redux
+import {useSelector, useDispatch} from '../../redux/store';
+import {setNewLanguage} from "../../redux/slices/languageSlice";
 
 // ----------------------------------------------------------------------
 
@@ -44,15 +43,34 @@ const ToolbarShadowStyle = styled("div")(({theme}) => ({
   boxShadow: theme.customShadows.z8,
 }));
 
+const LanguageButton = styled(Box)(({theme}) => ({
+  backgroundColor: 'white',
+  color: 'black',
+  padding: '0.5rem',
+  border: '1px solid lightgray',
+  cursor: 'pointer',
+  "&:hover": {
+    backgroundColor: 'lightgray',
+    transition: 'background-color 100ms linear',
+  },
+}));
+
 // ----------------------------------------------------------------------
 
 export default function MainNavbar() {
   const isOffset = useOffSetTop(1);
   const {pathname} = useLocation();
   const isHome = pathname === "/";
+  const language = useSelector(state => state.language.language)
+  const dispatch = useDispatch()
+
+  function changeLanguage(language) {
+    console.log(language);
+    dispatch(setNewLanguage(language));
+  }
 
   return (
-    <AppBar sx={{boxShadow: 0, bgcolor: "rgba(255,255,255, 0.5);", }}>
+    <AppBar sx={{boxShadow: 0, bgcolor: "rgba(255,255,255, 0.5);",}}>
       <ToolbarStyle
         disableGutters
         sx={{
@@ -89,6 +107,19 @@ export default function MainNavbar() {
               navConfig={navConfig}
             />
           </MHidden>
+
+          <Box sx={{display: 'flex'}}>
+            <LanguageButton onClick={() => changeLanguage('ES')} sx={{
+              backgroundColor: language === 'ES' ? 'lightgray' : 'white'
+            }}>
+              <p>ES</p>
+            </LanguageButton>
+            <LanguageButton onClick={() => changeLanguage('EN')} sx={{
+              backgroundColor: language === 'EN' ? 'lightgray' : 'white'
+            }}>
+              <p>EN</p>
+            </LanguageButton>
+          </Box>
 
           {/*<RouterLink to='/busqueda'>*/}
           {/*  <IconButton aria-label="buscador de go tec">*/}
