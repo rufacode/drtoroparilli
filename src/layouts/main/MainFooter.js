@@ -1,15 +1,9 @@
-import {Link as RouterLink, useLocation, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 // material
 import { styled } from "@mui/material/styles";
-import {Box, Container, Divider, Grid, Typography, Link, Button} from "@mui/material";
-import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
-import {grey} from "@mui/material/colors";
-
-//
-import Logo from "../../components/Logo";
-// import LogoSilbertec from "../../components/LogoSilbertec";
-// import SvgIconStyle from "../../components/SvgIconStyle";
+import {Box, Button} from "@mui/material";
 import MHidden from "../../components/@material-extend/MHidden";
+import {useSelector} from "../../redux/store";
 
 // ----------------------------------------------------------------------
 
@@ -47,186 +41,35 @@ const SocialIconsWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-
-
-// function Links() {
-//   return (
-//     <Grid container>
-//       <Grid item xs={12} md={4}>
-//         <Typography variant="caption" sx={{ fontFamily: "Din-STD-Engschrift" }}>
-//           POLÍTICAS DE PRIVACIDAD
-//         </Typography>
-//       </Grid>
-//
-//       <Grid item xs={12} md={4} sx={{ my: { xs: 1, md: 0 } }}>
-//         <Typography variant="caption" sx={{ fontFamily: "Din-STD-Engschrift" }}>
-//           CONDICIONES DE COMPRA
-//         </Typography>
-//       </Grid>
-//
-//       <Grid item xs={12} md={4}>
-//         <Typography variant="caption" sx={{ fontFamily: "Din-STD-Engschrift" }}>
-//           TÉRMINOS LEGALES
-//         </Typography>
-//       </Grid>
-//     </Grid>
-//   );
-// }
-
 // ----------------------------------------------------------------------
 
 export default function MainFooter() {
   const navigate = useNavigate();
-
-  function goToConsult() {
-    navigate('/consulta-online');
-  }
+  const { sections, isLoading } = useSelector(state => state.language);
 
   return (
     <RootStyle>
       <MHidden width='mdDown'>
         <SocialIconsWrapper >
           {
-            [...Array(3)].map((icon, i) => (
+            sections.common && !isLoading && sections.common.options.footer.links.map((icon) => (
               <img
-                src="/static/icons/facebook-logo.png"
-                key={i + 1}
+                key={icon.id}
+                src={icon.img}
                 width={30}
                 style={{ margin: '0 .5rem ' }}
-                alt="facebook logo"/>
+                alt={icon.title} />
             ))
 
           }
         </SocialIconsWrapper>
       </MHidden>
-      <Button variant='contained' onClick={goToConsult} >
-        Consulta online
-      </Button>
-      {/*<Container  sx={{ py: 10 }}>*/}
-      {/*  <Grid*/}
-      {/*    container*/}
-      {/*    justifyContent={{ xs: "center", md: "space-between" }}*/}
-      {/*    sx={{ textAlign: { xs: "center", md: "left" } }}*/}
-      {/*  >*/}
-      {/*    <Grid*/}
-      {/*      item*/}
-      {/*      xs={6}*/}
-      {/*      md={3}*/}
-      {/*      sx={{ display: "flex", alignItems: "center" }}*/}
-      {/*    >*/}
-      {/*      <Logo*/}
-      {/*        sx={{*/}
-      {/*          height: { xs: 70, sm: 100 },*/}
-      {/*          width: { xs: 70, sm: 100 },*/}
-      {/*          display: "block",*/}
-      {/*          mx: 0,*/}
-      {/*          mb: { xs: 2, md: 0 },*/}
-      {/*        }}*/}
-      {/*      />*/}
-      {/*    </Grid>*/}
-      {/*    <Grid*/}
-      {/*      item*/}
-      {/*      xs={6}*/}
-      {/*      md={3}*/}
-      {/*      sx={{ display: "flex", alignItems: "center", pr: 1 }}*/}
-      {/*    >*/}
-      {/*    </Grid>*/}
-
-      {/*    <Grid item xs={12} md={6} sx={{ mt: { xs: 2, md: 0 } }}>*/}
-      {/*      <Link*/}
-      {/*        component={RouterLink}*/}
-      {/*        to="/como-funciona-la-plataforma"*/}
-      {/*        sx={{ color: "#000", "&:hover": { opacity: 0.7 }, cursor: "pointer", }}*/}
-      {/*      >*/}
-      {/*        <Box*/}
-      {/*          sx={{*/}
-      {/*            display: "flex",*/}
-      {/*            alignItems: "center",*/}
-      {/*            cursor: "pointer",*/}
-      {/*            mb: 2,*/}
-      {/*            mx: 2,*/}
-      {/*            "&:hover": { opacity: 0.7 },*/}
-      {/*          }}*/}
-      {/*        >*/}
-      {/*          <ExpandCircleDownIcon*/}
-      {/*            sx={{ transform: "rotate(-90deg)", mr: 1 }}*/}
-      {/*            color="primary"*/}
-      {/*          />*/}
-      {/*          <Typography variant="caption">*/}
-      {/*            ¿Cómo funciona la plataforma?*/}
-      {/*          </Typography>*/}
-      {/*        </Box>*/}
-      {/*      </Link>*/}
-
-      {/*      /!*<MHidden width="mdUp">*!/*/}
-      {/*      /!*  <Divider />*!/*/}
-      {/*      /!*  <Box m={2} textAlign="left">*!/*/}
-      {/*      /!*    <Links />*!/*/}
-      {/*      /!*  </Box>*!/*/}
-      {/*      /!*</MHidden>*!/*/}
-
-      {/*      <Divider />*/}
-
-      {/*      <Box m={2} textAlign="left">*/}
-      {/*        <Grid container>*/}
-      {/*          <Grid item xs={6} md={4}>*/}
-      {/*            <Typography variant="caption">Teléfono</Typography>*/}
-      {/*            <Box*/}
-      {/*              sx={{*/}
-      {/*                display: "flex",*/}
-      {/*                alignItems: "center",*/}
-      {/*                cursor: "pointer",*/}
-      {/*                mt: "3px",*/}
-      {/*                "&:hover": { opacity: 0.7 },*/}
-      {/*              }}*/}
-      {/*            >*/}
-      {/*              <Typography variant="caption">+56 2 0000 000</Typography>*/}
-      {/*            </Box>*/}
-      {/*          </Grid>*/}
-
-      {/*          <Grid item xs={6} md={4}>*/}
-      {/*            <Typography variant="caption">Dirección</Typography>*/}
-      {/*            <Box*/}
-      {/*              sx={{*/}
-      {/*                display: "flex",*/}
-      {/*                alignItems: "center",*/}
-      {/*                cursor: "pointer",*/}
-      {/*                mt: "3px",*/}
-      {/*                "&:hover": { opacity: 0.7 },*/}
-      {/*              }}*/}
-      {/*            >*/}
-      {/*              <Typography variant="caption">*/}
-      {/*                Psje. Nombre ejemplo*/}
-      {/*              </Typography>*/}
-      {/*            </Box>*/}
-      {/*          </Grid>*/}
-
-      {/*          <Grid item xs={12} md={4} sx={{ mt: { xs: 2, md: 0 } }}>*/}
-      {/*            <Typography variant="caption">Encuéntranos en</Typography>*/}
-      {/*            <Box*/}
-      {/*              sx={{*/}
-      {/*                display: "flex",*/}
-      {/*                alignItems: "center",*/}
-      {/*                cursor: "pointer",*/}
-      {/*                mt: "3px",*/}
-      {/*                "&:hover": { opacity: 0.7 },*/}
-      {/*              }}*/}
-      {/*            >*/}
-      {/*              <Typography variant="caption">/gotec</Typography>*/}
-      {/*            </Box>*/}
-      {/*          </Grid>*/}
-      {/*        </Grid>*/}
-      {/*      </Box>*/}
-
-      {/*      /!*<MHidden width="mdDown">*!/*/}
-      {/*      /!*  <Divider />*!/*/}
-      {/*      /!*  <Box mt={2} mx={2}>*!/*/}
-      {/*      /!*    <Links />*!/*/}
-      {/*      /!*  </Box>*!/*/}
-      {/*      /!*</MHidden>*!/*/}
-      {/*    </Grid>*/}
-      {/*  </Grid>*/}
-      {/*</Container>*/}
+      {
+        sections.common && !isLoading &&
+        <Button variant='contained' onClick={() => navigate(sections.common.options.footer.cta.href)} >
+          {sections.common.options.footer.cta.text}
+        </Button>
+      }
     </RootStyle>
   );
 }

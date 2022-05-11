@@ -5,6 +5,7 @@ import exampleReducer from "./slices/exampleSlice";
 import formsReducer from "./slices/formsSlice";
 import backgroundImageReducer from "./slices/backgroundImageSlice";
 import languageReducer from "./slices/languageSlice";
+import sectionsReducer from "./slices/sections";
 
 
 // ----------------------------------------------------------------------
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   example: exampleReducer,
   forms: formsReducer,
   language: languageReducer,
+  sections: sectionsReducer,
 });
 
 export { rootPersistConfig, rootReducer };

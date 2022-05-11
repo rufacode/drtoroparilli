@@ -1,6 +1,6 @@
 import {styled} from "@mui/material/styles";
 import Page from "../components/Page";
-import {useDispatch} from "../redux/store";
+import {useDispatch, useSelector} from "../redux/store";
 import {useEffect} from "react";
 import {Box, Grid, Typography} from "@mui/material";
 import {updateImg} from "../redux/slices/backgroundImageSlice";
@@ -31,43 +31,11 @@ export const SpecialGrid = styled(Grid)(({theme}) => ({
   },
 }))
 
-const arrayImages = [
-  {
-    id: 123,
-    title: 'Antes y despues',
-    link: '/antes-y-despues',
-    url: '/static/img/antes-despues-index.jpg',
-  },
-  {
-    id: 145,
-    title: 'El equipo',
-    link: '/nosotros',
-    url: '/static/img/team-preview.jpg',
-  },
-  {
-    url: '/static/img/consulta-preview.jpg',
-    id: 167,
-    link: '/consulta-online',
-    title: 'Consulta Online'
-  },
-  {
-    url: '/static/img/contacto.jpg',
-    id: 1890,
-    link: '/procedimientos',
-    title: 'Procedimientos',
-  },
-  {
-    url: '/static/img/article-preview.jpg',
-    id: 1890,
-    link: '/articulos',
-    title: 'Articulos',
-  },
-]
-
-
 export default function LandingPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
+
+  const { sections, isLoading } = useSelector(state => state.language);
 
   function goTo(route) {
     navigate(route);
@@ -91,8 +59,8 @@ export default function LandingPage() {
         <Grid container maxWidth='lg' align='center' justify='center' spacing={2} justifySelf='center'
               sx={{display: 'flex', justifyContent: 'center', mt: 0.2, pt: 10, pb: 10, mx: 'auto'}}>
           {
-            arrayImages.map((el, i) => (
-              <SpecialGrid item xs={12} md={4} sx={{ px: 5, pb: 5 }} onClick={() => goTo(el.link)}>
+            sections.home && !isLoading && sections.home.options.cards.map((el) => (
+              <SpecialGrid key={el.id} item xs={12} md={4} sx={{ px: 5, pb: 5 }} onClick={() => goTo(el.href)}>
                 <Typography
                   variant='h6'
                   fontWeight='bold'
@@ -101,7 +69,7 @@ export default function LandingPage() {
                 >
                   {el.title}
                 </Typography>
-                <Box classsName='preview' component='img' width='100%' height={200} src={el.url} alt=""/>
+                <Box classsName='preview' component='img' width='100%' height={200} src={el.img} alt=""/>
               </SpecialGrid>
             ))
           }

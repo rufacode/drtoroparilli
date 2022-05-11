@@ -15,7 +15,7 @@ import {detectLanguage} from './utils/detectLanguage';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {useDispatch, useSelector} from "./redux/store";
-import {setNewLanguage, getAllData} from "./redux/slices/languageSlice";
+import {setNewLanguage} from "./redux/slices/languageSlice";
 
 
 // ----------------------------------------------------------------------
@@ -27,26 +27,25 @@ export default function App() {
 
   const initLanguage = async () => {
     if (localStorage.language) {
-      dispatch(setNewLanguage(localStorage.language))
+      await dispatch(setNewLanguage(localStorage.language))
+      await console.log(localStorage.language)
+      await console.log('se trajo el lenguaje!')
     } else {
       await changeLanguage(window.navigator.language || window.navigator.userLanguage);
     }
-    dispatch(getAllData())
-    // this.getAllData(this.$store.state.language)
   }
 
   const changeLanguage = async (language) => {
     console.log(language);
     const result = await detectLanguage(language);
     console.log(result);
-    dispatch(setNewLanguage(result.data))
-    // this.$store.commit("changeLanguage", result.data);
+    await dispatch(setNewLanguage(result.data))
   }
-
   useEffect(() => {
     initLanguage();
   }, []);
 
+  console.log(isLoading)
 
   return (
     <ThemeConfig>

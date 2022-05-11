@@ -9,11 +9,9 @@ import {MHidden} from "../../components/@material-extend";
 //
 import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
-import navConfig from "./MenuConfig";
 // redux
-import {useSelector, useDispatch} from '../../redux/store';
+import {useDispatch, useSelector} from '../../redux/store';
 import {setNewLanguage} from "../../redux/slices/languageSlice";
-
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -43,7 +41,7 @@ const ToolbarShadowStyle = styled("div")(({theme}) => ({
   boxShadow: theme.customShadows.z8,
 }));
 
-const LanguageButton = styled(Box)(({theme}) => ({
+const LanguageButton = styled(Box)(({}) => ({
   backgroundColor: 'white',
   color: 'black',
   padding: '0.5rem',
@@ -61,13 +59,16 @@ export default function MainNavbar() {
   const isOffset = useOffSetTop(1);
   const {pathname} = useLocation();
   const isHome = pathname === "/";
-  const language = useSelector(state => state.language.language)
+  const {language, isLoading, sections} = useSelector(state => state.language)
   const dispatch = useDispatch()
 
-  function changeLanguage(language) {
+  async function changeLanguage(language) {
     console.log(language);
-    dispatch(setNewLanguage(language));
+    await dispatch(setNewLanguage(language));
+    await console.log('se cambio el lenguaje!')
+    await console.log(localStorage.language)
   }
+
 
   return (
     <AppBar sx={{boxShadow: 0, bgcolor: "rgba(255,255,255, 0.5);",}}>
@@ -100,13 +101,16 @@ export default function MainNavbar() {
 
           <Box sx={{flexGrow: 1}}/>
 
-          <MHidden width="mdDown">
-            <MenuDesktop
-              isOffset={isOffset}
-              isHome={isHome}
-              navConfig={navConfig}
-            />
-          </MHidden>
+          {
+            sections.common && !isLoading &&
+            <MHidden width="mdDown">
+              <MenuDesktop
+                isOffset={isOffset}
+                isHome={isHome}
+                navConfig={sections.common.options.menu.links}
+              />
+            </MHidden>
+          }
 
           <Box sx={{display: 'flex'}}>
             <LanguageButton onClick={() => changeLanguage('ES')} sx={{
@@ -121,27 +125,16 @@ export default function MainNavbar() {
             </LanguageButton>
           </Box>
 
-          {/*<RouterLink to='/busqueda'>*/}
-          {/*  <IconButton aria-label="buscador de go tec">*/}
-          {/*    <SearchIcon/>*/}
-          {/*  </IconButton>*/}
-          {/*</RouterLink>*/}
-
-          {/*<RouterLink to='/carrito'>*/}
-          {/*  <IconButton aria-label="carrito de compras">*/}
-          {/*    <Badge badgeContent={products.length} color="secondary" invisible={products.length < 1}>*/}
-          {/*      <ShoppingCartOutlinedIcon />*/}
-          {/*    </Badge>*/}
-          {/*  </IconButton>*/}
-          {/*</RouterLink>*/}
-
-          <MHidden width="mdUp">
-            <MenuMobile
-              isOffset={isOffset}
-              isHome={isHome}
-              navConfig={navConfig}
-            />
-          </MHidden>
+          {
+            sections.common && !isLoading &&
+            <MHidden width="mdUp">
+              <MenuMobile
+                isOffset={isOffset}
+                isHome={isHome}
+                navConfig={sections.common.options.menu.links}
+              />
+            </MHidden>
+          }
         </Box>
       </ToolbarStyle>
 
