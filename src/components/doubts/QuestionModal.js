@@ -1,22 +1,23 @@
+import {useState} from 'react';
+import {useSelector} from "../../redux/store";
 import {
   Box,
   Button,
   Dialog,
   DialogContent,
-  DialogTitle,
   FormControl,
   Grid,
-  IconButton, MenuItem, Select,
+  IconButton,
+  MenuItem,
+  Select,
   TextField,
   Typography
 } from "@mui/material";
-import { useState } from 'react';
-import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
-import ReactPlayer from "react-player";
+import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 
 export default function QuestionModal() {
   const [openPreview, setOpenPreview] = useState(false);
-
+  const {sections, isLoading} = useSelector(state => state.language)
 
 
   function handleClose() {
@@ -28,81 +29,81 @@ export default function QuestionModal() {
   }
 
   return (
-    <>
-      <Button
-        fullWidth
-        variant='contained'
-        color='primary'
-        sx={{ fontSize: '.85rem', my: 2 }}
-        onClick={() => showDetail()}
-      >
-        ¿No aclaramos tus dudas? Consúltanos</Button>
-      <Dialog onClose={handleClose} open={openPreview} fullWidth maxWidth="sm">
-        <Box sx={{ display : 'flex', justifyContent: 'space-between', alignItems: 'center', p: 4 }}>
-          <Typography sx={{ textAlign: 'center' }}>¿NO ACLARAMOS TUS DUDAS? CONSÚLTANOS</Typography>
-          <IconButton onClick={handleClose} sx={{ p: 1.5}} color='secondary'>
-            <DisabledByDefaultIcon />
-          </IconButton>
-        </Box>
-        <DialogContent>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <Typography>Nombre</Typography>
-              <TextField
-                fullWidth
-                type='text'
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography>Apellido</Typography>
-              <TextField
-                fullWidth
-                type='text'
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography>Email</Typography>
-              <TextField
-                fullWidth
-                type='text'
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography>Procedimientos</Typography>
-              <FormControl variant="outlined" sx={{ mb: 2 }} fullWidth>
-                <Select
-                  labelId="Procedures"
-                  id="Procedures"
-                >
-                  <MenuItem value=''>Seleccione una opcion</MenuItem>
-                  <MenuItem value='Gluteoplastia'>Gluteoplastia</MenuItem>
-                  <MenuItem value='Cirugia del abdomen'>Cirugia del abdomen</MenuItem>
-                  <MenuItem value='Liposuccion laser'>Liposuccion laser</MenuItem>
-                  <MenuItem value='Tratamiento de arrugas'>Tratamiento de arrugas</MenuItem>
-                  <MenuItem value='Cirugia del menton'>Cirugia del menton</MenuItem>
-                  <MenuItem value='Cirugia del menton'>Cirugia del menton</MenuItem>
-                  <MenuItem value='Cirugia de parpados'>Cirugia de parpados</MenuItem>
-                  <MenuItem value='Cirugia de orejas'>Cirugia de orejas</MenuItem>
-                  <MenuItem value='Reduccion de mamas'>Reduccion de mamasn</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>Mensaje</Typography>
-              <TextField
-                fullWidth
-                type='text'
-                multiline
-                rows={6}
-              />
-            </Grid>
-          </Grid>
-          <Box sx={{ display: 'flex', justifyContent: 'center', my: 3 }}>
-            <Button variant='contained'>Enviar</Button>
-          </Box>
-        </DialogContent>
-      </Dialog>
-    </>
+    <div>
+      {
+        sections.doubts && !isLoading &&
+        <>
+          <Button
+            fullWidth
+            variant='contained'
+            color='primary'
+            sx={{fontSize: '.85rem', my: 2}}
+            onClick={() => showDetail()}
+          >
+            {sections.doubts.options.modal.title}</Button>
+          <Dialog onClose={handleClose} open={openPreview} fullWidth maxWidth="sm">
+            <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 4}}>
+              <Typography sx={{textAlign: 'center'}}>{sections.doubts.options.modal.title}</Typography>
+              <IconButton onClick={handleClose} sx={{p: 1.5}} color='secondary'>
+                <DisabledByDefaultIcon/>
+              </IconButton>
+            </Box>
+            <DialogContent>
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={6}>
+                  <Typography>{sections.doubts.options.modal.fields.name.text}</Typography>
+                  <TextField
+                    fullWidth
+                    type='text'
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Typography>{sections.doubts.options.modal.fields.lastname.text}</Typography>
+                  <TextField
+                    fullWidth
+                    type='text'
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Typography>{sections.doubts.options.modal.fields.email.text}</Typography>
+                  <TextField
+                    fullWidth
+                    type='text'
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Typography>{sections.doubts.options.modal.fields.procedures.text}</Typography>
+                  <FormControl variant="outlined" sx={{mb: 2}} fullWidth>
+                    <Select
+                      labelId="Procedures"
+                      id="Procedures"
+                    >
+                      {
+                        sections.doubts.options.modal.fields.procedures.options.map(el => (
+                          <MenuItem key={el.id} value={el.value}>{el.text}</MenuItem>
+                        ))
+                      }
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography>{sections.doubts.options.modal.fields.comment.text}</Typography>
+                  <TextField
+                    fullWidth
+                    type='text'
+                    multiline
+                    rows={6}
+                  />
+                </Grid>
+              </Grid>
+              <Box sx={{display: 'flex', justifyContent: 'center', my: 3}}>
+                <Button variant='contained'>{sections.doubts.options.modal.buttonText}</Button>
+              </Box>
+            </DialogContent>
+          </Dialog>
+        </>
+      }
+    </div>
   )
 }
 

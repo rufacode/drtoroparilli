@@ -1,10 +1,6 @@
 import {styled} from "@mui/material/styles";
 import Page from "../components/Page";
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
   Button,
   Container,
   Grid,
@@ -12,15 +8,9 @@ import {
   Typography
 } from "@mui/material";
 import {useEffect, useState} from "react";
-import Venezuela from "../components/contact/Venezuela";
-import Dominicana from "../components/contact/Dominicana";
-import Parilli from "../components/aboutUs/Parilli";
-import Places from "../components/aboutUs/Places";
-import Team from "../components/aboutUs/Team";
-import {useDispatch} from "../redux/store";
+import {useDispatch, useSelector} from "../redux/store";
 import {updateImg} from "../redux/slices/backgroundImageSlice";
 import {doubtButton, generalData} from "../utils/mock-data/doubts";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import QuestionsList from "../components/doubts/QuestionsList";
 import QuestionModal from "../components/doubts/QuestionModal";
 
@@ -41,68 +31,77 @@ export const RootStyle = styled(Page)(({theme}) => ({
 
 
 
-
-
 export default function Doubts() {
-  const [section, setSection] = useState(generalData)
+  const [section, setSection] = useState(null)
 
+  const { sections, isLoading } = useSelector(state => state.language)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(updateImg('/static/img/dudas.jpg'));
   }, [])
 
+  useEffect(() => {
+    if (sections.doubts && !isLoading) {
+      setSection(sections.doubts.options.buttons.general)
+    }
+  }, [sections])
 
   return (
     <RootStyle title='Articulos'>
-      <Container>
-        <Typography variant='h2' fontWeight={'bold'} sx={{ mb: 2 }}>
-          Tus dudas
-        </Typography>
-      </Container>
+      {
+        sections.doubts && !isLoading &&
+        <>
+          <Container>
+            <Typography variant='h2' fontWeight={'bold'} sx={{ mb: 2 }}>
+              {sections.doubts.options.title}
+            </Typography>
+          </Container>
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 3, minHeight: '30rem' }}>
-            <Button
-              sx={{ fontSize: '.85rem' }}
-              fullWidth
-              variant={section.view === 'general' && 'contained'}
-              onClick={() => setSection(generalData)}
-            >
-              Dudas generales
-            </Button>
-            <Grid container>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <Paper elevation={3} sx={{ p: 3, minHeight: '30rem' }}>
+                <Button
+                  sx={{ fontSize: '.85rem' }}
+                  fullWidth
+                  variant={ section && section.view === 'general' && 'contained'}
+                  onClick={() => setSection(sections.doubts.options.buttons.general)}
+                >
+                  {sections.doubts.options.buttons.general.name}
+                </Button>
+                <Grid container>
+                  {
+                    sections.doubts.options.buttons.restDoubts.map((el) => (
+                      <Grid item xs={12} sm={6} key={el.id}>
+                        <Button
+                          fullWidth
+                          sx={{ fontSize: '.85rem', mx: {md: 2}, my: 2 }}
+                          variant={section && section.view === el.view && 'contained'}
+                          onClick={() => setSection(el)}
+                        >
+                          {el.name}
+                        </Button>
+                      </Grid>
+                    ))
+                  }
+                </Grid>
+                <QuestionModal />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={6}>
               {
-                doubtButton.map((el, i) => (
-                  <Grid item xs={12} sm={6} key={i + 1}>
-                    <Button
-                      fullWidth
-                      sx={{ fontSize: '.85rem', mx: {md: 2}, my: 2 }}
-                      variant={section.view === el.view && 'contained'}
-                      onClick={() => setSection(el)}
-                    >
-                      {el.name}
-                    </Button>
-                  </Grid>
-                ))
+                section &&
+                <>
+                  <Typography variant='h4' fontWeight='bold' sx={{ px: 4 }}>{section.name}</Typography>
+                  <QuestionsList data={section} />
+                </>
               }
             </Grid>
-            <QuestionModal />
-            {/*<Button*/}
-            {/*  sx={{ fontSize: '.85rem', my: 2 }}*/}
-            {/*  fullWidth*/}
-            {/*  variant='contained'*/}
-            {/*>*/}
-            {/*  ¿NO ACLARAMOS TUS DUDAS? CONSÚLTANOS*/}
-            {/*</Button>*/}
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography variant='h4' fontWeight='bold' sx={{ px: 4 }}>{section.name}</Typography>
-          <QuestionsList data={section} />
-        </Grid>
-      </Grid>
+          </Grid>
+
+        </>
+      }
+
 
 
     </RootStyle>

@@ -31,7 +31,7 @@ export const SpecialBox = styled(Box)(({theme}) => ({
 }))
 
 export default function Articles() {
-  const [category, setCategory] = useState('Choose a category');
+  const [category, setCategory] = useState('');
   const [sex, setSex] = useState('');
   const dispatch = useDispatch();
 

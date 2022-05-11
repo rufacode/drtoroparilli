@@ -55,6 +55,7 @@ const languageSlice = createSlice({
       state.sections.common = action.payload.filter(x => x.section === 'common')[0];
       state.sections.home = action.payload.filter(x => x.section === 'home')[0];
       state.sections.articles = action.payload.filter(x => x.section === 'articles')[0];
+      state.sections.doubts = action.payload.filter(x => x.section === 'doubts')[0];
       // state.sections = action.payload;
     },
   },
