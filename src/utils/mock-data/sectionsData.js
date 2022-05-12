@@ -757,6 +757,39 @@ const sections = [
     }
   },
   {
+    id: 1440,
+    section: 'beforeAfter',
+    language: 'ES',
+    options: {
+      title: 'Antes y Despues',
+      gender: {
+        male: {
+          view: 'male',
+          options: [
+            {text: 'Liposuccion Laser', id: 1, value: 1},
+            {text: 'Ginecomastia', id: 2, value: 2},
+            {text: 'Cirugia de nariz', id: 3, value: 3},
+            {text: 'Cirugia de oreja', id: 4, value: 4},
+          ]
+        },
+        female: {
+          view: 'female',
+          options: [
+            {text: 'Gluteplastia', id: 5, value: 5},
+            {text: 'Cirugia del abdomen', id: 6, value: 6},
+            {text: 'Liposuccion Laser', id: 1, value: 1},
+            {text: 'Aumento de mamas', id: 2, value: 2},
+            {text: 'Reduccion de mamas', id: 7, value: 7},
+            {text: 'Renuvion', id: 8, value: 8},
+            {text: 'Cirugia de nariz', id: 3, value: 3},
+            {text: 'Lifting facial', id: 9, value: 9},
+            {text: 'Cirugia de parpados', id: 10, value: 10},
+          ]
+        }
+      }
+    }
+  },
+  {
     id: 510,
     section: 'onlineConsult',
     language: 'EN',

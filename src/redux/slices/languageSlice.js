@@ -57,6 +57,7 @@ const languageSlice = createSlice({
       state.sections.articles = action.payload.filter(x => x.section === 'articles')[0];
       state.sections.doubts = action.payload.filter(x => x.section === 'doubts')[0];
       state.sections.onlineConsult = action.payload.filter(x => x.section === 'onlineConsult')[0];
+      state.sections.beforeAfter = action.payload.filter(x => x.section === 'beforeAfter')[0];
       // state.sections = action.payload;
     },
   },
