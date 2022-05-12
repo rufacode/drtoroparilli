@@ -340,8 +340,75 @@ const sections = [
             ]
           },
         ]
-
       }
+    }
+  },
+  {
+    id: 150,
+    section: 'onlineConsult',
+    language: 'ES',
+    options: {
+      title: 'Consulta Online',
+      buttonReportText: 'Reportar Error',
+      modal: {
+        preview: {
+          label: 'Email',
+          placeholder: 'Ejemplo@123.com',
+          actionButton: 'Siguiente'
+        },
+        reportError: {
+          title: 'SI HAS TENIDO ALGÚN PROBLEMA CON NUESTRA CONSULTA ON LINE, TE AGRADECERÍAMOS QUE NOS AYUDES A RESOLVERLO LLENANDO ESTA FORMA.',
+          name: {text: 'Nombre'},
+          email: {text: 'Email'},
+          country: {text: 'Pais'},
+          comeFrom: {
+            text: '¿Desde qué equipo encontró problemas?',
+            options: [
+              {text: 'Computadora', value: 1, id: 1},
+              {text: 'Tablet', value: 2, id: 2},
+              {text: 'Smartphone', value: 3, id: 3},
+            ]
+          },
+          model: {text: '¿Cuál es el modelo/tipo de su equipo?'},
+          browser: {text: '¿Qué navegador utiliza?'},
+          url: {text: '¿A qué dirección web de Toro Parilli está accediendo?'},
+          timeOfError: {
+            text: '¿En qué punto recibió un error del sistema?',
+            options: [
+              {text: 'Al ingresar a la pagina, no la encuentra', value: 0, id: 1},
+              {text: 'Al tratar de acceder a la consulta online', value: 1, id: 2},
+              {text: 'Al ingresar con mi correo electronico', value: 2, id: 3},
+              {text: 'En un paso interno al estar llenando los datos', value: 3, id: 4},
+              {text: 'Otro por favor describa', value: 4, id: 5},
+            ]
+          },
+          file: {text: 'Si puede agregar una captura de pantalla de su problema, siempre puede ser de utilidad', buttonText: 'Seleccionar'},
+          description: {text: 'Gracias por su reporte y utilice este espacio para describirnos el problema con la consulta on line'},
+          sendButton: {text: 'Enviar'},
+        },
+      },
+      sideContent: `<p>
+        Llenar este formulario, y responder sus preguntas, permitirá al Dr. Toro Parilli realizar una evaluación inicial de su caso, para que reciba un diagnóstico y el correspondiente presupuesto.
+        <br>
+        <br>
+        En pro de realizar un diagnóstico preciso es importante que suministre toda la información solicitada con la mayor fidelidad posible.
+        <br>
+        <br>
+        Tiempo aproximado para llenar la consulta online: 10 minutos.
+        <br>
+        <br>
+        • General: US $ 50,00
+        <br>
+        <br>
+        • Solo para residentes en Venezuela: Bs. 242,00
+        <br>
+        <br>
+        Si requiere ayuda en el proceso, por favor escriba a: atencionalcliente@toroparilli.com
+        <br>
+        <br>
+        Nota: La información e imágenes suministradas son estrictamente confidenciales.
+        </p>
+      `
     }
   },
   // ENGLISH
@@ -686,8 +753,75 @@ const sections = [
             ]
           },
         ]
-
       }
+    }
+  },
+  {
+    id: 510,
+    section: 'onlineConsult',
+    language: 'EN',
+    options: {
+      title: 'Online Consult',
+      buttonReportText: 'Report Error',
+      modal: {
+        preview: {
+          label: 'Email',
+          placeholder: 'Example@123.com',
+          actionButton: 'Next'
+        },
+        reportError: {
+          title: 'IF YOU HAVE HAD ANY PROBLEM WITH OUR ONLINE CONSULTATION, WE WOULD THANK YOU FOR YOUR HELP TO SOLVE IT BY FILLING OUT THIS FORM.',
+          name: {text: 'Name'},
+          email: {text: 'Email'},
+          country: {text: 'Country'},
+          comeFrom: {
+            text: 'From which computer did you encounter problems?',
+            options: [
+              {text: 'Computer', value: 1, id: 1},
+              {text: 'Tablet', value: 2, id: 2},
+              {text: 'Smartphone', value: 3, id: 3},
+            ]
+          },
+          model: {text: 'What is the model/type of your equipment?'},
+          browser: {text: 'What browser do you use?'},
+          url: {text: 'Which Toro Parilli web address are you accessing?'},
+          timeOfError: {
+            text: 'At what point did you get a system error?',
+            options: [
+              {text: 'When I enter the page, I can\'t find it.', value: 0, id: 1},
+              {text: 'When trying to access the online consultation', value: 1, id: 2},
+              {text: 'When entering with my email', value: 2, id: 3},
+              {text: 'In an internal step when filling the data', value: 3, id: 4},
+              {text: 'Other please describe', value: 4, id: 5},
+            ]
+          },
+          file: {text: 'If you can add a screenshot of your problem it can always help', buttonText: 'Choose'},
+          description: {text: 'Thank you for your report and use this space to describe the problem with the online consultation.'},
+          sendButton: {text: 'Send'},
+        },
+      },
+      sideContent: `<p>
+      Filling out this form, and answering your questions, will allow Dr. Toro Parilli to make an initial evaluation of your case, so that you receive a diagnosis and the corresponding estimate.
+        <br>
+        <br>
+        In order to make an accurate diagnosis, it is important that you provide all the requested information as faithfully as possible.
+        <br>
+        <br>
+        Approximate time to complete the online consultation: 10 minutes.
+        <br>
+        <br>
+        • Overall: $50.00
+        <br>
+        <br>
+        • Only for residents in Venezuela: Bs. 242.00
+        <br>
+        <br>
+        If you require help in the process, please write to: atencionalcliente@toroparilli.com
+        <br>
+        <br>
+        Note: The information and images provided are strictly confidential.
+        </p>
+      `
     }
   },
 ]

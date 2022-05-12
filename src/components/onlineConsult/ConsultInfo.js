@@ -2,53 +2,36 @@ import {useState, useEffect} from 'react';
 import {Box, Button, Typography} from "@mui/material";
 import {MHidden} from "../@material-extend";
 import OnlineConsultOnline from "./OnlineConsultModal";
+import {useSelector} from "../../redux/store";
 
 export default function ConsultInfo() {
-  const [state, setState] = useState(false);
+  const { sections, isLoading } = useSelector(state => state.language);
 
-  useEffect(() => {
-    // Effect code here
-    return () => {
-      //your cleanup code codes here
-    };
-  }, [state])
+  function catchHtml(html) {
+    return {
+      __html: html
+    }
+  }
 
   return (
     <Box sx={{ p: 3, height: {md: '100%'}, backgroundColor: '#307cceab', color: '#fff' }}>
-      <Typography variant='h1' color='#fff' align='center'>Consulta <br/> online</Typography>
-      <MHidden width='mdDown'>
-        <Typography sx={{ mt: 2 }} variant='body1'>
-          Llenar este formulario, y responder sus preguntas, permitirá al Dr. Toro Parilli realizar una evaluación
-          inicial de su caso, para que reciba un diagnóstico y el correspondiente presupuesto.
-        </Typography>
-        <Typography sx={{ mt: 2 }} variant='body1'>
-          En pro de realizar un diagnóstico preciso es importante que suministre toda la información solicitada
-          con la mayor fidelidad posible.
-        </Typography>
-        <Typography sx={{ mt: 2 }} variant='body1'>
-          Tiempo aproximado para llenar la consulta online: 10 minutos.
-        </Typography>
-        <Typography sx={{ mt: 2 }} variant='body1'>
-          • General: US $ 50,00
-        </Typography>
-        <Typography sx={{ mt: 2 }} variant='body1'>
-          • Solo para residentes en Venezuela: Bs. 242,00
-        </Typography>
-        <Typography sx={{ mt: 2 }} variant='body1'>
-          Si requiere ayuda en el proceso, por favor escriba a: <span>atencionalcliente@toroparilli.com </span>
-        </Typography>
-        <Typography sx={{ mt: 2 }} variant='body1'>
-          Nota: La información e imágenes suministradas son estrictamente confidenciales.
-        </Typography>
-      </MHidden>
-      <Box
-      sx={{
-        display: 'flex',
-        justifyContent: {xs: 'center', md: 'end'},
-        mt: {md: 5, xs: 2}
-      }}>
-        <OnlineConsultOnline />
-      </Box>
+      {
+        sections.onlineConsult && !isLoading &&
+        <>
+          <Typography variant='h1' color='#fff' align='center' sx={{ mb: 3 }}>{sections.onlineConsult.options.title}</Typography>
+          <MHidden width='mdDown'>
+            <div dangerouslySetInnerHTML={catchHtml(sections.onlineConsult.options.sideContent)} />
+          </MHidden>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: {xs: 'center', md: 'end'},
+              mt: {md: 5, xs: 2}
+            }}>
+            <OnlineConsultOnline />
+          </Box>
+        </>
+      }
     </Box>
   )
 }
