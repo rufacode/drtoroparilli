@@ -60,6 +60,7 @@ const languageSlice = createSlice({
       state.sections.beforeAfter = action.payload.filter(x => x.section === 'beforeAfter')[0];
       state.sections.aboutUs = action.payload.filter(x => x.section === 'aboutUs')[0];
       state.sections.procedures = action.payload.filter(x => x.section === 'procedures')[0];
+      state.sections.contact = action.payload.filter(x => x.section === 'contact')[0];
       // console.log(action.payload);
       // state.sections = action.payload;
     },

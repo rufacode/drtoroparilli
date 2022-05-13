@@ -3,7 +3,7 @@ import Page from "../components/Page";
 import {Box, Container, Grid, Typography} from "@mui/material";
 import ContactInfo from "../components/contact/ContactInfo";
 import ContactForm from "../components/contact/ContactForm";
-import {useDispatch} from "../redux/store";
+import {useDispatch, useSelector} from "../redux/store";
 import {updateImg} from "../redux/slices/backgroundImageSlice";
 import { useEffect } from 'react';
 
@@ -22,11 +22,11 @@ export const RootStyle = styled(Page)(({theme}) => ({
   },
 }))
 
-
-
-
 export default function Contact() {
   const dispatch = useDispatch();
+
+  const {isLoading, sections} = useSelector(state => state.language)
+
 
   useEffect(() => {
     dispatch(updateImg('/static/img/contacto.jpg'))
@@ -34,20 +34,22 @@ export default function Contact() {
 
   return (
     <RootStyle>
-      <Container>
-        <Typography variant="h1" sx={{mb: 2}} >
-          Contacto
-        </Typography>
-        <Grid container spacing={4} alignItems='center'>
-          <Grid item xs={12} md={6}>
-            <ContactForm />
+      {
+        sections.contact && !isLoading &&
+        <Container>
+          <Typography variant="h1" sx={{mb: 2}}>
+            Contacto
+          </Typography>
+          <Grid container spacing={4} alignItems='center'>
+            <Grid item xs={12} md={6}>
+              <ContactForm/>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <ContactInfo/>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <ContactInfo />
-          </Grid>
-        </Grid>
-      </Container>
-
+        </Container>
+      }
     </RootStyle>
   )
 }

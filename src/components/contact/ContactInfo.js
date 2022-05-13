@@ -3,6 +3,7 @@ import Venezuela from "./Venezuela";
 import Dominicana from "./Dominicana";
 import {Box, Button, ButtonGroup, Paper} from "@mui/material";
 import {styled} from "@mui/styles";
+import {useSelector} from "../../redux/store";
 
 //-----------------------------------------------------------
 
@@ -19,6 +20,7 @@ export default function ContactInfo() {
   const [view, setView] = useState('venezuela');
   const [component, setComponent] = useState(undefined);
 
+  const {isLoading, sections} = useSelector(state => state.language)
 
 
   useEffect(() => {
@@ -37,9 +39,11 @@ export default function ContactInfo() {
   return (
     <Paper elevation={3} sx={{ p: 3, minHeight: '30rem' }}>
       <ButtonWrapper >
-        <Button sx={{ fontSize: '.85rem' }} variant={view === 'venezuela' && 'contained'} onClick={() => setView('venezuela')}>Venezuela</Button>
-        <Button sx={{ fontSize: '.85rem' }} variant={view === 'dominicana' && 'contained'} onClick={() => setView('dominicana')}>Republica Dominicana</Button>
-      </ButtonWrapper>
+        {
+          sections.contact.options.locations.places.map((place) => (
+            <Button key={place.id} sx={{ fontSize: '.85rem' }} variant={view === place.value && 'contained'} onClick={() => setView(place.value)}>{place.title}</Button>
+          ))
+        }</ButtonWrapper>
       {component}
     </Paper>
   )

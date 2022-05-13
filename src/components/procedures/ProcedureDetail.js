@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, Paper, Tab, Tabs, Typography} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {useSelector} from "../../redux/store";
 
 const Circle = styled("div")(({theme}) => ({
   border: "solid",
@@ -20,6 +21,8 @@ const Circle = styled("div")(({theme}) => ({
 
 export default function ProcedureDetail({item}) {
   const [tabValue, setTabValue] = useState(0)
+
+  const { language } = useSelector(state => state.language)
 
   function handleChangeTab(event, newValue) {
     setTabValue(newValue)
@@ -72,8 +75,8 @@ export default function ProcedureDetail({item}) {
         </Grid>
         <Grid item xs={12} md={6}>
           <Tabs value={tabValue} variant='fullWidth' onChange={handleChangeTab} aria-label="basic tabs example">
-            <Tab label="Detalles" {...a11yProps(0)} />
-            {item.questions.length > 1 && <Tab label="Tus dudas" {...a11yProps(1)} />}
+            <Tab label={language === 'ES' ? 'Detalles': 'Details'} {...a11yProps(0)} />
+            {item.questions.length > 1 && <Tab label={language === 'ES' ? 'Tus dudas': 'Your doubts'} {...a11yProps(1)} />}
           </Tabs>
           <TabPanel value={tabValue} index={0}>
             <Box sx={{maxHeight: '380px', overflowY: 'auto'}}>

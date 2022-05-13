@@ -10,6 +10,7 @@ export default function ContactForm() {
   const status = useSelector((state) => state.forms.status);
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+  const {isLoading, sections} = useSelector(state => state.language)
 
 
   const formik = useFormik({
@@ -48,45 +49,45 @@ export default function ContactForm() {
 
   return (
     <Container sx={{py: {xs: 5}}}>
-      <Paper maxWidth={800} width="100%" display="block" mx="auto" sx={{ backgroundColor: '#fff', p: 4 }}>
+      <Paper maxWidth={800} width="100%" display="block" mx="auto" sx={{backgroundColor: '#fff', p: 4}}>
         <FormikProvider value={formik}>
           <Form autoComplete="off" novalidate onSubmit={handleSubmit}>
 
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">Nombre *</Typography>
+                <Typography variant="body1">{sections.contact.options.form.name.text} *</Typography>
                 <TextField
                   fullWidth
                   type="text"
                   {...getFieldProps("name")}
                   size="small"
-                  placeholder="Escribir texto"
+                  placeholder={sections.contact.options.form.name.placeholder}
                   error={Boolean(touched.name && errors.name)}
                   helperText={touched.name && errors.name}
                   sx={{mb: 2}}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">Apellido *</Typography>
+                <Typography variant="body1">{sections.contact.options.form.lastname.text} *</Typography>
                 <TextField
                   fullWidth
                   type="text"
                   {...getFieldProps("lastname")}
                   size="small"
-                  placeholder="Escribir texto"
+                  placeholder={sections.contact.options.form.lastname.placeholder}
                   error={Boolean(touched.lastname && errors.lastname)}
                   helperText={touched.lastname && errors.lastname}
                   sx={{mb: 2}}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">Teléfono fijo *</Typography>
+                <Typography variant="body1">{sections.contact.options.form.phone.text}*</Typography>
                 <TextField
                   fullWidth
                   type="text"
                   {...getFieldProps("homePhone")}
                   size="small"
-                  placeholder="+ 56 9 0000 0000"
+                  placeholder={sections.contact.options.form.phone.placeholder}
                   error={Boolean(touched.homePhone && errors.homePhone)}
                   helperText={touched.homePhone && errors.homePhone}
                   sx={{mb: 2}}
@@ -94,13 +95,13 @@ export default function ContactForm() {
               </Grid>
               <Grid item xs={12} md={6}>
 
-                <Typography variant="body1">Teléfono de contacto *</Typography>
+                <Typography variant="body1">{sections.contact.options.form.cellphone.text} *</Typography>
                 <TextField
                   fullWidth
                   type="text"
                   {...getFieldProps("phone")}
                   size="small"
-                  placeholder="+ 56 9 0000 0000"
+                  placeholder={sections.contact.options.form.cellphone.placeholder}
                   error={Boolean(touched.phone && errors.phone)}
                   helperText={touched.phone && errors.phone}
                   sx={{mb: 2}}
@@ -108,13 +109,13 @@ export default function ContactForm() {
               </Grid>
               <Grid item xs={12} md={6}>
 
-                <Typography variant="body1">Email *</Typography>
+                <Typography variant="body1">{sections.contact.options.form.email.text} *</Typography>
                 <TextField
                   fullWidth
                   type="text"
                   {...getFieldProps("email")}
                   size="small"
-                  placeholder="mail@ejemplo.com"
+                  placeholder={sections.contact.options.form.email.placeholder}
                   error={Boolean(touched.email && errors.email)}
                   helperText={touched.email && errors.email}
                   sx={{mb: 2}}
@@ -122,52 +123,51 @@ export default function ContactForm() {
               </Grid>
               <Grid item xs={12} md={6}>
 
-                <Typography variant="body1">DNI / Cedula *</Typography>
+                <Typography variant="body1">{sections.contact.options.form.dni.text} *</Typography>
                 <TextField
                   fullWidth
                   type="text"
                   {...getFieldProps("document")}
                   size="small"
-                  placeholder="mail@ejemplo.com"
+                  placeholder={sections.contact.options.form.dni.placeholder}
                   error={Boolean(touched.document && errors.document)}
                   helperText={touched.document && errors.document}
                   sx={{mb: 2}}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">Asunto *</Typography>
+                <Typography variant="body1">{sections.contact.options.form.reason.text} *</Typography>
                 <TextField
                   fullWidth
                   type="text"
                   {...getFieldProps("reason")}
                   size="small"
-                  placeholder="mail@ejemplo.com"
+                  placeholder={sections.contact.options.form.reason.placeholder}
                   error={Boolean(touched.reason && errors.reason)}
                   helperText={touched.reason && errors.reason}
                   sx={{mb: 2}}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="body1">¿Como se entero de nosotros? *</Typography>
-                <FormControl variant="outlined" sx={{ mb: 2 }} fullWidth>
+                <Typography variant="body1">{sections.contact.options.form.howDidYouKnow.text} *</Typography>
+                <FormControl variant="outlined" sx={{mb: 2}} fullWidth>
                   <Select
                     labelId="howDidYouKnow"
                     id="howDidYouKnow"
                     size='small'
                     {...getFieldProps("howDidYouKnow")}
                   >
-                    <MenuItem value=''>Seleccione una opcion</MenuItem>
-                    <MenuItem value='Cárnica'>Cárnica</MenuItem>
-                    <MenuItem value='Fruta y vertuda'>Fruta y vertuda</MenuItem>
-                    <MenuItem value='Pesquera'>Pesquera</MenuItem>
-                    <MenuItem value='Panadería'>Panadería</MenuItem>
-                    <MenuItem value='Vegano'>Vegano</MenuItem>
+                    {
+                      sections.contact.options.form.howDidYouKnow.options.map(option => (
+                        <MenuItem key={option.id} value={option.text}>{option.text}</MenuItem>
+                      ))
+                    }
                   </Select>
                 </FormControl>
               </Grid>
             </Grid>
 
-            <Typography variant="body1">Mensaje</Typography>
+            <Typography variant="body1">{sections.contact.options.form.message.text}</Typography>
             <TextField
               fullWidth
               multiline
@@ -176,7 +176,7 @@ export default function ContactForm() {
               type="text"
               {...getFieldProps("message")}
               size="small"
-              placeholder="Escribir texto"
+              placeholder={sections.contact.options.form.message.placeholder}
               error={Boolean(touched.message && errors.message)}
               helperText={touched.message && errors.message}
               sx={{mb: 3}}
@@ -188,8 +188,8 @@ export default function ContactForm() {
               disabled={isSubmitting || !formik.isValid}
               sx={{display: "block", mx: "auto"}}
             >
-              {isSubmitting && 'Enviando...'}
-              {!isSubmitting && 'Go'}
+              {isSubmitting && sections.contact.options.form.sendingText}
+              {!isSubmitting && sections.contact.options.form.buttonText}
             </Button>
           </Form>
         </FormikProvider>
