@@ -39,16 +39,30 @@ const sections = [
       cards: [
         {img: '/static/img/antes-despues-index.jpg', title: 'Antes y Despues', href: '/antes-y-despues', id: 1},
         {img: '/static/img/team-preview.jpg', title: 'El Equipo', href: '/el-equipo', id: 2},
-        {img: '/static/img/consulta-preview.jpg', title: 'Consulta Online', href: '/consulta-online', id: 3},
+        {img: '/static/img/preview-online-consult.jpg', title: 'Consulta Online', href: '/consulta-online', id: 3},
         {img: '/static/img/contacto.jpg', title: 'Procedimientos', href: '/procedimientos', id: 4},
-        {img: '/static/img/article-preview.jpg', title: 'Articulos', href: '/articulos', id: 5},
+        {img: '/static/img/preview-articles.jpg', title: 'Articulos', href: '/articulos', id: 5},
+      ]
+    }
+  },
+  {
+    id: 4,
+    section: 'home',
+    language: 'EN',
+    options: {
+      cards: [
+        {img: '/static/img/antes-despues-index.jpg', title: 'Before and Ffter', href: '/antes-y-despues', id: 1},
+        {img: '/static/img/team-preview.jpg', title: 'The Team', href: '/el-equipo', id: 2},
+        {img: '/static/img/preview-online-consult.jpg', title: 'Online Consult', href: '/consulta-online', id: 3},
+        {img: '/static/img/contacto.jpg', title: 'Procedures', href: '/procedimientos', id: 4},
+        {img: '/static/img/preview-articles.jpg', title: 'Articles', href: '/articulos', id: 5},
       ]
     }
   },
   {
     id: 33,
     section: 'articles',
-    language: 'ES',
+    language: 'EN',
     options: {
       categoryText: 'Seleccione una categoria',
       title: 'Articulos',
@@ -444,20 +458,7 @@ const sections = [
       },
     }
   },
-  {
-    id: 4,
-    section: 'home',
-    language: 'EN',
-    options: {
-      cards: [
-        {img: '/static/img/antes-despues-index.jpg', title: 'Before and Ffter', href: '/antes-y-despues', id: 1},
-        {img: '/static/img/team-preview.jpg', title: 'The Team', href: '/el-equipo', id: 2},
-        {img: '/static/img/consulta-preview.jpg', title: 'Online Consult', href: '/consulta-online', id: 3},
-        {img: '/static/img/contacto.jpg', title: 'Procedures', href: '/procedimientos', id: 4},
-        {img: '/static/img/article-preview.jpg', title: 'Articles', href: '/articulos', id: 5},
-      ]
-    }
-  },
+
   {
     id: 66,
     section: 'articles',
