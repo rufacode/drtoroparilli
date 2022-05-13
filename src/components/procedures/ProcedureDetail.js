@@ -1,23 +1,7 @@
 import {useState} from 'react';
-
 import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, Paper, Tab, Tabs, Typography} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-// const StyledPaper = styled(Box)(({theme}) => ({
-//
-//   "&::-webkit-scrollbar": {
-//     width: '1em',
-//   },
-//   "&::-webkit-scrollbar-track": {
-//     boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)'
-//   },
-//   "&::-webkit-scrollbar-thumb": {
-//     backgroundColor: 'darkgrey',
-//     outline: '1px solid slategrey',
-//   }
-// }))
-
 
 const Circle = styled("div")(({theme}) => ({
   border: "solid",
@@ -89,7 +73,7 @@ export default function ProcedureDetail({item}) {
         <Grid item xs={12} md={6}>
           <Tabs value={tabValue} variant='fullWidth' onChange={handleChangeTab} aria-label="basic tabs example">
             <Tab label="Detalles" {...a11yProps(0)} />
-            <Tab label="Tus dudas" {...a11yProps(1)} />
+            {item.questions.length > 1 && <Tab label="Tus dudas" {...a11yProps(1)} />}
           </Tabs>
           <TabPanel value={tabValue} index={0}>
             <Box sx={{maxHeight: '380px', overflowY: 'auto'}}>
